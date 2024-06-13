@@ -1,9 +1,9 @@
 import '../styles/main.css'
 
-function Master(props) {
+const Master = ({data}) =>{
   return (
     <div className='master'>
-        {props.data.class}
+        {data.class_name}
     </div>
   )
 }

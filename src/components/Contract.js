@@ -1,12 +1,12 @@
 import '../styles/main.css'
 import Master from './Master'
-import Servant from './Servant'
+import Servant from './ServantCard'
 
-function Contract(props) {
+const Contract = ({data}) => {
     return (
         <div className='contract'>
-            <Servant data={props.data}></Servant>
-            <Master data={props.data}></Master>
+            <Servant data={data}></Servant>
+            <Master data={data}></Master>
         </div>
     )
 }
