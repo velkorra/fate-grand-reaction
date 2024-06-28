@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+.lora {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
