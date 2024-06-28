@@ -1,0 +1,19 @@
+{
+    "class": "class",
+    "asc_level": "ascension level",
+    "level": "level",
+    "servant": {
+        "saber": "Saber",
+        "archer": "Archer",
+        "lancer": "Lancer",
+        "rider": "Rider",
+        "caster": "Caster",
+        "assassin": "Assassin",
+        "berserker": "Berserker",
+        "shielder": "Shielder",
+        "ruler": "Ruler",
+        "avenger": "Avenger",
+        "alter_ego": "Alter Ego",
+        "foreigner": "Foreigner"
+    }
+}

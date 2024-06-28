@@ -1,0 +1,19 @@
+{
+    "class": "класс",
+    "asc_level": "уровень вознесения",
+    "level": "уровень",
+    "servant": {
+        "saber": "Сейбер",
+        "archer": "Арчер",
+        "lancer": "Лансер",
+        "rider": "Райдер",
+        "caster": "Кастер",
+        "assassin": "Ассасин",
+        "berserker": "Берсеркер",
+        "shielder": "Шилдер",
+        "ruler": "Рулер",
+        "avenger": "Авенджер",
+        "alter_ego": "Альтер Эго",
+        "foreigner": "Форейнер"
+    }
+}
