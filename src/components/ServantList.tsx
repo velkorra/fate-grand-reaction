@@ -4,7 +4,7 @@ import { Servant } from '../models/servant';
 import ServantCard from './ServantCard';
 import { useTranslation } from 'react-i18next';
 import FileUpload from './FileUpload';
-import Modal from './Modal';
+import Modal from './ServantCreate';
 
 interface ServantListProps {
   servants: Servant[]
@@ -24,7 +24,7 @@ const ServantList: FC<ServantListProps> = ({ servants }) => {
           <ServantCard key={id} servant={servant}></ServantCard>
         ))}
         <div className='create-card' onClick={openCreateWindow}>
-          Create
+          {t('create')}
         </div>
       </div>
       {state === "opened"? (

@@ -1,18 +1,22 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 
-type ModalProps = {
+type ServantCreateProps = {
     onClose: () => void;
 };
 
-const Modal: FC<ModalProps> = ({ onClose }) => {
+const ServantCreate: FC<ServantCreateProps> = ({ onClose }) => {
     // State for the form fields
+    const { t } = useTranslation()
+    const servantOptions = t('servant', { returnObjects: true });
     const [servant, setServant] = useState({
         id: '',
         name: '',
         className: '',
-        ascensionLevel: '',
-        level: ''
+        alignment: '',
+        gender: 'undefined'
     });
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
     // State for the attached file
     const [file, setFile] = useState<File | null>(null);
@@ -24,12 +28,28 @@ const Modal: FC<ModalProps> = ({ onClose }) => {
             ...servant,
             [name]: value
         });
+
+    };
+    const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setServant({
+            ...servant,
+            [name]: value
+        });
     };
 
     // Handle file attachment
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            setFile(e.target.files[0]);
+        const selectedFile = e.target.files
+        if (selectedFile) {
+            setFile(selectedFile[0]);
+        }
+        if (selectedFile) {
+            // Создание URL для предварительного просмотра
+            const url = URL.createObjectURL(selectedFile[0]);
+            setPreviewUrl(url);
+        } else {
+            setPreviewUrl(null);
         }
     };
 
@@ -42,8 +62,8 @@ const Modal: FC<ModalProps> = ({ onClose }) => {
         formData.append('id', servant.id);
         formData.append('name', servant.name);
         formData.append('className', servant.className);
-        formData.append('ascensionLevel', servant.ascensionLevel);
-        formData.append('level', servant.level);
+        formData.append('gender', servant.gender);
+        formData.append('alignment', servant.alignment);
         if (file) {
             formData.append('file', file);
         }
@@ -85,20 +105,35 @@ const Modal: FC<ModalProps> = ({ onClose }) => {
                         </label>
                         <label>
                             Class Name:
-                            <input type="text" name="className" value={servant.className} onChange={handleChange} required />
+                            <select name="className" value={servant.className} onChange={handleSelectChange} required>
+                                {Object.entries(servantOptions).map(([key, value]) => (
+                                    <option key={key} value={key}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
                         </label>
                         <label>
                             Ascension Level:
-                            <input type="number" name="ascensionLevel" value={servant.ascensionLevel} onChange={handleChange} required />
+                            <input type="number" name="ascensionLevel" value={servant.gender} onChange={handleChange} required />
                         </label>
                         <label>
-                            Level:
-                            <input type="number" name="level" value={servant.level} onChange={handleChange} required />
+                            {t('gender')}:
                         </label>
-                        <label>
+                        <select name="gender" value={servant.gender} onChange={handleSelectChange} required>
+                            <option value="undefined">{t('undefined')}</option>
+                            <option value="male">{t('male')}</option>
+                            <option value="female">{t('female')}</option>
+                        </select>
+                        <label htmlFor="file-upload" className="custom-file-upload">
                             Attach Photo:
-                            <input type="file" onChange={handleFileChange} />
                         </label>
+                        <input id="file-upload" type="file" onChange={handleFileChange} />
+                        {previewUrl && (
+                            <div>
+                                <img src={previewUrl} alt="Preview" className="select-picture" />
+                            </div>
+                        )}
                         <button type="submit">Submit</button>
                     </form>
                 </div>
@@ -107,4 +142,4 @@ const Modal: FC<ModalProps> = ({ onClose }) => {
     );
 };
 
-export default Modal;
+export default ServantCreate;
