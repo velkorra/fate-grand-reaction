@@ -3,6 +3,7 @@
     "asc_level": "ascension level",
     "level": "level",
     "edit" : "Edit",
+    "create" : "Create new Servant",
     "servant": {
         "saber": "Saber",
         "archer": "Archer",

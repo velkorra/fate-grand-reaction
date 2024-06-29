@@ -19,9 +19,9 @@ const FileUpload: FC = () => {
 
     const formData = new FormData();
     formData.append('file', file);
-
+    formData.append('grade', "1");
     try {
-      const response = await axios.post('http://127.0.0.1:8000/upload/', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/servants/1/pictures/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
