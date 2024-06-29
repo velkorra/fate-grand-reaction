@@ -10,6 +10,7 @@
     "female": "female",
     "undefined": "undefined",
     "create": "Create new Servant",
+    "delete" : "delete",
     "alignments": {
         "lawful_good": "lawful good",
         "neutral_good": "neutral good",
@@ -33,6 +34,8 @@
         "ruler": "Ruler",
         "avenger": "Avenger",
         "alter_ego": "Alter Ego",
-        "foreigner": "Foreigner"
+        "foreigner": "Foreigner",
+        "pretender" : "Pretender",
+        "mooncancer": "Moon Cancer"
     }
 }

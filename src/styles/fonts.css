@@ -6,4 +6,12 @@
     font-weight: 600;
     font-style: italic;
   }
-  
+@font-face {
+  font-family: "Palatino";
+  src: url("..\\fonts\\Palatino Linotype B.ttf");
+}
+
+@font-face {
+  font-family: "Carneys Gallery Script";
+  src: url("..\\fonts\\Carneys Gallery Script.otf");
+}

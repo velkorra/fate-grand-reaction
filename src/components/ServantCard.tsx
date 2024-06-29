@@ -5,6 +5,7 @@ import '../styles/main.css'
 import { useTranslation } from 'react-i18next'
 import EditButton from './EditButton'
 import axios, { isAxiosError } from 'axios'
+import DeleteButton from './DeleteButton'
 interface ServantCardProps {
   servant : Servant
 }
@@ -35,7 +36,6 @@ const ServantCard: FC<ServantCardProps> = ({ servant }) => {
 
     fetchImage();
   }, [servant.id]);
-  {console.log(imageUrl);}
   return (
     
     <div className='servant-card'>
@@ -57,6 +57,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant }) => {
         <p className='servant-ascension'>{t('asc_level')}: {servant.ascensionLevel}</p>
         <p className='servant-level'>{t('level')}: {servant.level}</p>
         <EditButton></EditButton>
+        <DeleteButton></DeleteButton>
       </div>
     </div>
   );

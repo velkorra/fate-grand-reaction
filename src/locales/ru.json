@@ -1,5 +1,5 @@
 {
-    "name" : "имя",
+    "name": "имя",
     "class": "класс",
     "asc_level": "уровень вознесения",
     "level": "уровень",
@@ -10,7 +10,8 @@
     "male": "мужской",
     "female": "женский",
     "undefined": "неопределенный",
-    "alignments" : {
+    "delete" : "удалить",
+    "alignments": {
         "lawful_good": "законопослушно-добрый",
         "neutral_good": "нейтрально-добрый",
         "chaotic_good": "хаотично-добрый",
@@ -33,6 +34,8 @@
         "ruler": "Рулер",
         "avenger": "Авенджер",
         "alter_ego": "Альтер Эго",
-        "foreigner": "Форейнер"
+        "foreigner": "Форейнер",
+        "pretender": "Претендент",
+        "mooncancer": "Мункансер"
     }
 }
