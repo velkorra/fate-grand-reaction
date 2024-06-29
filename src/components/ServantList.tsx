@@ -15,8 +15,7 @@ const ServantList: FC<ServantListProps> = ({ servants }) => {
   const [state, setState] = useState<string>("initial")
   const openCreateWindow = () => { setState('opened') }
   const closeCreateWindow = () => { setState('initial') }
-  console.log(state);
-  
+
   return (
     <div>
       <div className='servantListGrid'>

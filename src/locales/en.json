@@ -1,4 +1,5 @@
 {
+    "name" : "name",
     "class": "class",
     "asc_level": "ascension level",
     "level": "level",
@@ -9,6 +10,17 @@
     "female": "female",
     "undefined": "undefined",
     "create": "Create new Servant",
+    "alignments": {
+        "lawful_good": "lawful good",
+        "neutral_good": "neutral good",
+        "chaotic_good": "chaotic good",
+        "lawful_neutral": "lawful neutral",
+        "true_neutral": "true neutral",
+        "chaotic_neutral": "chaotic neutral",
+        "lawful_evil": "lawful evil",
+        "neutral_evil": "neutral evil",
+        "chaotic_evil": "chaotic evil"
+    },
     "servant": {
         "saber": "Saber",
         "archer": "Archer",
