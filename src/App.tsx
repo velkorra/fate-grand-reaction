@@ -4,7 +4,7 @@ import { Servant } from "./models/servant";
 import Header from "./components/Header";
 import { getServants } from "./Api";
 import ServantList from "./components/ServantList";
-
+import './i18n'
 
 const App: FC = () => {
 
