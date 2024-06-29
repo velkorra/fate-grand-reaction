@@ -1,6 +1,7 @@
 .servant-card {
     display: flex;
     position: relative;
+    height: 300px;
     background: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -12,11 +13,14 @@
   }
   
   .servant-image-container {
-    flex: 1;
+    flex: 0.5;
     margin-right: 16px;
+    padding-top: 5px;
+    height: 100%;
   }
   
   .servant-image {
+    max-height: 80%;
     max-width: 100%;
     border-radius: 8px;
     object-fit: cover;
@@ -27,6 +31,7 @@
   }
   
   .servant-name {
+    margin-top: 0;
     font-weight: bold;
     font-size: 1.5rem;
     color: #2c3e50;
@@ -47,45 +52,34 @@
     content: '• ';
     color: #2980b9;
   }
-
-  .edit-button {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    background: rgba(100, 149, 237, 0.8);
-    color: white;
+.servant-btn{
+  color: white;
     border: none;
     border-radius: 5px;
     padding: 10px;
-    width: 100px;
+    width: 80%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  .edit-button {
+
+    background: rgba(100, 149, 237, 0.8);
+    
   }
   .delete-button {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-    width: 100px;
+
     background: rgba(190, 15, 15, 0.8);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  .edit-icon {
+  .servant-icon{
     margin-right: 5px;
   }
+  /* .edit-icon {
+    
+  } */
 
   .create-card {
     display: flex;
@@ -109,4 +103,15 @@
 .create-card:hover {
     color: #2c3e50;
     border-color: #2980b9;
+}
+.servant-control{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 15%;
+    height: 40%;
+    
 }

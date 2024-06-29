@@ -3,14 +3,15 @@ import '../styles/main.css'
 import { Servant } from '../models/servant';
 import ServantCard from './ServantCard';
 import { useTranslation } from 'react-i18next';
-import FileUpload from './FileUpload';
+
 import Modal from './ServantCreate';
 
 interface ServantListProps {
+  reload: () => void
   servants: Servant[]
 }
 
-const ServantList: FC<ServantListProps> = ({ servants }) => {
+const ServantList: FC<ServantListProps> = ({ servants, reload }) => {
   const { t } = useTranslation()
   const [state, setState] = useState<string>("initial")
   const openCreateWindow = () => { setState('opened') }
@@ -19,15 +20,15 @@ const ServantList: FC<ServantListProps> = ({ servants }) => {
   return (
     <div>
       <div className='servantListGrid'>
-        {servants.map((servant: Servant, id: number) => (
-          <ServantCard key={id} servant={servant}></ServantCard>
-        ))}
         <div className='create-card' onClick={openCreateWindow}>
           {t('create')}
         </div>
+        {servants.map((servant: Servant, id: number) => (
+          <ServantCard key={id} servant={servant} reload={reload}></ServantCard>
+        ))}
       </div>
       {state === "opened"? (
-        <Modal onClose={closeCreateWindow}></Modal>
+        <Modal reload={reload} onClose={closeCreateWindow}></Modal>
         // <div className='popup-effect'></div>
       ):''}
     </div>

@@ -9,8 +9,13 @@
     "gender": "Пол",
     "male": "мужской",
     "female": "женский",
+    "attach_photo" : "Прикрепить фото",
     "undefined": "неопределенный",
-    "delete" : "удалить",
+    "delete": "удалить",
+    "confirm_delete": "Подтвердить удаление",
+    "are_you_sure_delete": "Вы уверены, что хотите удалить?",
+    "confirm": "Подтвердить",
+    "cancel": "Отменить",
     "alignments": {
         "lawful_good": "законопослушно-добрый",
         "neutral_good": "нейтрально-добрый",
@@ -37,5 +42,12 @@
         "foreigner": "Форейнер",
         "pretender": "Претендент",
         "mooncancer": "Мункансер"
-    }
+    },
+    "description": "Описание",
+    "history": "История",
+    "prototype_person": "Прототип Персонажа",
+    "illustrator": "Иллюстратор",
+    "voice_actor": "Актёр озвучки",
+    "temper": "Темперамент",
+    "intro": "Введение"
 }

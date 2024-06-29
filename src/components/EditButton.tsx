@@ -7,8 +7,8 @@ import { capitalize } from '../capitalize';
 const EditButton: FC = () => {
   const {t} = useTranslation()
   return (
-    <button className='delete-button'>
-      <FaEdit className='delete-icon' /> {capitalize(t('delete'))}
+    <button className='servant-btn edit-button'>
+      <FaEdit className='servant-icon edit-icon' /> {capitalize(t('edit'))}
     </button>
   );
 };

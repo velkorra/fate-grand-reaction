@@ -1,5 +1,5 @@
 {
-    "name" : "name",
+    "name": "name",
     "class": "class",
     "asc_level": "ascension level",
     "level": "level",
@@ -8,9 +8,14 @@
     "gender": "gender",
     "male": "male",
     "female": "female",
+    "attach_photo" : "attach_photo",
     "undefined": "undefined",
     "create": "Create new Servant",
-    "delete" : "delete",
+    "delete": "delete",
+    "confirm_delete": "Confirm delete",
+    "are_you_sure_delete": "Are you sure you want to delete?",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
     "alignments": {
         "lawful_good": "lawful good",
         "neutral_good": "neutral good",
@@ -35,7 +40,14 @@
         "avenger": "Avenger",
         "alter_ego": "Alter Ego",
         "foreigner": "Foreigner",
-        "pretender" : "Pretender",
+        "pretender": "Pretender",
         "mooncancer": "Moon Cancer"
-    }
+    },
+    "description": "Description",
+    "history": "History",
+    "prototype_person": "Prototype Person",
+    "illustrator": "Illustrator",
+    "voice_actor": "Voice Actor",
+    "temper": "Temper",
+    "intro": "Introduction"
 }

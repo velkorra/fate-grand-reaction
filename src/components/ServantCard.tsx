@@ -6,27 +6,29 @@ import { useTranslation } from 'react-i18next'
 import EditButton from './EditButton'
 import axios, { isAxiosError } from 'axios'
 import DeleteButton from './DeleteButton'
+import { deleteServant } from '../Api'
 interface ServantCardProps {
-  servant : Servant
+  reload: () => void
+  servant: Servant
 }
 
-const ServantCard: FC<ServantCardProps> = ({ servant }) => {
-  const {t} = useTranslation()
+const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
+  const { t } = useTranslation()
   const [imageUrl, setImageUrl] = useState<string>('');
   useEffect(() => {
     const fetchImage = async () => {
       try {
         const response = await axios.get('http://localhost:8000/get_image/', {
-          params : {
-            "servant_id" : servant.id,
+          params: {
+            "servant_id": servant.id,
             "grade": servant.ascensionLevel
           },
           responseType: 'blob',
         });
         setImageUrl(URL.createObjectURL(response.data));
       } catch (error) {
-        if (isAxiosError(error)){
-          if (error.response?.status === 404){
+        if (isAxiosError(error)) {
+          if (error.response?.status === 404) {
             setImageUrl(require(`../servant_cards/${servant.className}.PNG`))
           }
         }
@@ -35,13 +37,16 @@ const ServantCard: FC<ServantCardProps> = ({ servant }) => {
     };
 
     fetchImage();
-  }, [servant.id]);
+  }, [servant]);
+  const handleDelete = async (servant_id: number) => {
+    await deleteServant(servant_id)
+  }
   return (
-    
+
     <div className='servant-card'>
 
       <div className='servant-image-container'>
-      {imageUrl ? (
+        {imageUrl ? (
           <img
             src={imageUrl}
             alt={`${servant.name}`}
@@ -56,8 +61,10 @@ const ServantCard: FC<ServantCardProps> = ({ servant }) => {
         <p className='servant-class'>{t('class')}: {t(`servant.${servant.className}`)}</p>
         <p className='servant-ascension'>{t('asc_level')}: {servant.ascensionLevel}</p>
         <p className='servant-level'>{t('level')}: {servant.level}</p>
-        <EditButton></EditButton>
-        <DeleteButton></DeleteButton>
+        <div className='servant-control'>
+          <EditButton></EditButton>
+          <DeleteButton deleteServant={() => handleDelete(servant.id)} reload={reload}></DeleteButton>
+        </div>
       </div>
     </div>
   );
