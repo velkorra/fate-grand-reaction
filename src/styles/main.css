@@ -1,6 +1,7 @@
 @import url("servantCard.css");
 @import url("header.css");
 @import url("fonts.css");
+@import url("servantList.css");
 
 body {
     /* background-color: hsl(225deg 15% 18% / 90%); */

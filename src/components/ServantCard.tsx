@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { Servant } from '../models/servant'
 import '../styles/main.css'
-import '../i18n'
+
 import { useTranslation } from 'react-i18next'
+import EditButton from './EditButton'
 interface ServantCardProps {
   servant : Servant
 }
@@ -23,6 +24,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant }) => {
         <p className='servant-class'>{t('class')}: {t(`servant.${servant.className}`)}</p>
         <p className='servant-ascension'>{t('asc_level')}: {servant.ascensionLevel}</p>
         <p className='servant-level'>{t('level')}: {servant.level}</p>
+        <EditButton></EditButton>
       </div>
     </div>
   );
