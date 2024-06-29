@@ -1,24 +1,36 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import '../styles/main.css'
 import { Servant } from '../models/servant';
 import ServantCard from './ServantCard';
 import { useTranslation } from 'react-i18next';
 import FileUpload from './FileUpload';
+import Modal from './Modal';
 
 interface ServantListProps {
   servants: Servant[]
 }
 
 const ServantList: FC<ServantListProps> = ({ servants }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
+  const [state, setState] = useState<string>("initial")
+  const openCreateWindow = () => { setState('opened') }
+  const closeCreateWindow = () => { setState('initial') }
+  console.log(state);
+  
   return (
-    <div className='servantListGrid'>
-      {servants.map((servant: Servant, id: number) => (
+    <div>
+      <div className='servantListGrid'>
+        {servants.map((servant: Servant, id: number) => (
           <ServantCard key={id} servant={servant}></ServantCard>
-      ))}
-      <div className='create-card'>
-        <FileUpload></FileUpload>
+        ))}
+        <div className='create-card' onClick={openCreateWindow}>
+          Create
+        </div>
       </div>
+      {state === "opened"? (
+        <Modal onClose={closeCreateWindow}></Modal>
+        // <div className='popup-effect'></div>
+      ):''}
     </div>
   );
 };
