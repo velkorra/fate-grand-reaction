@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import { FaEdit } from 'react-icons/fa';  // Используем иконку редактирования из react-icons
+import { useTranslation } from 'react-i18next';
+import { FaEdit } from 'react-icons/fa';
 
 
 const EditButton: FC = () => {
+  const {t} = useTranslation()
   return (
     <button style={buttonStyle}>
-      <FaEdit style={iconStyle} /> Изменить
+      <FaEdit style={iconStyle} /> {t('edit')}
     </button>
   );
 };
 
-// Стили для кнопки
+
 const buttonStyle: React.CSSProperties = {
   background: 'rgba(100, 149, 237, 0.8)',
   color: 'white',
@@ -25,7 +27,7 @@ const buttonStyle: React.CSSProperties = {
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
 };
 
-// Стили для иконки
+
 const iconStyle: React.CSSProperties = {
   marginRight: '5px'
 };
