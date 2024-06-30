@@ -22,3 +22,31 @@ export const deleteServant = async (servant_id: number): Promise<string> => {
         return "Servant not found"
     }
 }
+export const createServant = async (formData: FormData): Promise<any> => {
+    const response = await axios.post(BASE_URL + 'servants_new', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    return response
+}
+export const addLocalization = async (formData: FormData, language: string, servant_id: number): Promise<any> => {
+    const response = await axios.post(BASE_URL + 'localization', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        params: {
+            "language": language,
+            "servant_id": servant_id
+        }
+    })
+    return response
+}
+export const getLocalization = async (language: string, servant_id: number): Promise<any> => {
+    const response = await axios.get(BASE_URL + `localization/${servant_id}`, {
+        params: {
+            "language": language
+        }
+    })
+    return response
+}

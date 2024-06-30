@@ -7,6 +7,7 @@ import EditButton from './EditButton'
 import axios, { isAxiosError } from 'axios'
 import DeleteButton from './DeleteButton'
 import { deleteServant } from '../Api'
+import InfoButton from './InfoButton'
 interface ServantCardProps {
   reload: () => void
   servant: Servant
@@ -65,6 +66,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
           <EditButton></EditButton>
           <DeleteButton deleteServant={() => handleDelete(servant.id)} reload={reload}></DeleteButton>
         </div>
+        <InfoButton servant={servant}></InfoButton>
       </div>
     </div>
   );

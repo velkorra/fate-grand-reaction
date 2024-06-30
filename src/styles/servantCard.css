@@ -74,6 +74,14 @@
 
     background: rgba(190, 15, 15, 0.8);
   }
+  .info-button{
+    background: rgba(100, 149, 237, 0.8);
+    position: absolute;
+    left: 0;
+    bottom: 5%;
+    width: 20%;
+
+  }
   .servant-icon{
     margin-right: 5px;
   }

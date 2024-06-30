@@ -2,6 +2,7 @@ import React, { FC, useState, ChangeEvent, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
 import axios from "axios";
+import { addLocalization, createServant } from "../Api";
 
 type ServantCreateProps = {
     onClose: () => void;
@@ -75,7 +76,6 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
             setFile(selectedFile[0]);
         }
         if (selectedFile) {
-            // Создание URL для предварительного просмотра
             const url = URL.createObjectURL(selectedFile[0]);
             setPreviewUrl(url);
         } else {
@@ -83,11 +83,9 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
         }
     };
 
-    // Handle form submission
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Create FormData object to send data to server
         const formData = new FormData();
         formData.append('name', servant.name);
         formData.append('class_name', servant.className);
@@ -96,19 +94,24 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
         if (file) {
             formData.append('file', file);
         }
+        
+        const englishFormData = new FormData();
+        Object.keys(servant.english).forEach(field => {
+            englishFormData.append(field, servant.english[field]);
+        });
 
-        // Send form data to server
+        const russianFormData = new FormData();
+        Object.keys(servant.russian).forEach(field => {
+            russianFormData.append(field, servant.russian[field]);
+        });
+
         try {
-            console.log(formData);
-
-            const response = await axios.post('http://localhost:8000/servants_new', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
+            const response = await createServant(formData)
+            const servant_id = response.data["id"]
+            await addLocalization(russianFormData, "ru", servant_id)
+            await addLocalization(englishFormData, "en", servant_id)
             reload()
             if (response.status === 200) {
-                // Handle success
                 console.log('Form submitted successfully.');
                 onClose();
             } else {
@@ -181,35 +184,35 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
                         <div className="subform scrolling">
                             <label>
                                 {capitalize(t('name'))}:
-                                <input type="text" name="name" value={servant[language].name} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <input type="text" name="name" value={servant[language].name} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('description'))}:
-                                <textarea className="text-box" name="description" value={servant[language].description} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <textarea className="text-box" name="description" value={servant[language].description} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('history'))}:
-                                <textarea className="text-box" name="history" value={servant[language].description} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <textarea className="text-box" name="history" value={servant[language].history} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('prototype_person'))}:
-                                <input type="text" name="prototype_person" value={servant[language].prototype_person} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <input type="text" name="prototype_person" value={servant[language].prototype_person} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('illustrator'))}:
-                                <input type="text" name="illustrator" value={servant[language].illustrator} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <input type="text" name="illustrator" value={servant[language].illustrator} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('voice_actor'))}:
-                                <input type="text" name="voice_actor" value={servant[language].voice_actor} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <input type="text" name="voice_actor" value={servant[language].voice_actor} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('temper'))}:
-                                <input type="text" name="temper" value={servant[language].temper} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <input type="text" name="temper" value={servant[language].temper} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
                                 {capitalize(t('intro'))}:
-                                <input type="text" name="intro" value={servant[language].intro} onChange={(e) => handleLanguageChange(e, language)} required />
+                                <input type="text" name="intro" value={servant[language].intro} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                         </div>
                     </form>

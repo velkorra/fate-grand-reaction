@@ -1,4 +1,5 @@
 {
+    "lang" : "en",
     "name": "name",
     "class": "class",
     "asc_level": "ascension level",
@@ -16,6 +17,7 @@
     "are_you_sure_delete": "Are you sure you want to delete?",
     "confirm": "Confirm",
     "cancel": "Cancel",
+    "info": "Information",
     "alignments": {
         "lawful_good": "lawful good",
         "neutral_good": "neutral good",
