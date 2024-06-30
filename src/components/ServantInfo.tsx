@@ -23,7 +23,15 @@ const ServantInfo: FC<ServantInfoProps> = ({ servant }) => {
     return (
         <div>
             
-            {JSON.stringify(details, null, 2)}
+            {details[0]!== "this servant has no info" ? (
+                <ul>
+                {Object.entries(details).map(([key, value]) => (
+                  <li key={key}>
+                    <strong>{t(key)}:</strong> {Array.isArray(value) ? value.join(', ') : (value? value.toString() : '')}
+                  </li>
+                ))}
+              </ul>
+            ): ''}
             </div>
     );
 };

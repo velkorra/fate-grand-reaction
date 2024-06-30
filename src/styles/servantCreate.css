@@ -21,6 +21,10 @@
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+.limited {
+    max-width: 600px;
+    max-height: 600px;
+}
 .edit-window{
     width: 1000px;
 }

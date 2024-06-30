@@ -23,8 +23,8 @@ const InfoButton: FC<InfoButtonProps> = ({servant}) => {
       <FaInfo className='servant-icon info-icon' /> {capitalize(t('info'))}
     </button>
     {isModalOpen && (
-        <div className='modal-overlay' onClick={closeModal}>
-            <div className='modal' onClick={e => e.stopPropagation()}>
+        <div className='modal-overlay'  onClick={closeModal}>
+            <div className='modal limited' onClick={e => e.stopPropagation()}>
                 <ServantInfo servant={servant}></ServantInfo>
             </div>
         </div>
