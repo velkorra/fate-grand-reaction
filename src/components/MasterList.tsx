@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Master } from '../models/master';
 import MasterCard from './MasterCard';
 import { getMasters } from '../Api';
+import MasterCreate from './MasterCreate';
 
 
 interface MasterListProps {
@@ -38,10 +39,10 @@ const MasterList: FC<MasterListProps> = ({reload }) => {
           <MasterCard key={master.id} master={master} reload={reload}></MasterCard>
         ))}
       </div>
-      {/* {state === "opened"? (
-        <Modal reload={reload} onClose={closeCreateWindow}></Modal>
+      {state === "opened"? (
+        <MasterCreate reload={reload} onClose={closeCreateWindow}></MasterCreate>
         // <div className='popup-effect'></div>
-      ):''} */}
+      ):''}
     </div>
   );
 };

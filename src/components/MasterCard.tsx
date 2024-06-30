@@ -2,7 +2,9 @@ import { FC, useEffect, useState } from 'react';
 import '../styles/main.css'
 import { Master } from '../models/master';
 import { useTranslation } from 'react-i18next';
-import { getAciveContractsCount } from '../Api';
+import { deleteMaster, getAciveContractsCount } from '../Api';
+import EditButton from './EditButton';
+import DeleteButton from './DeleteButton';
 
 interface MasterCardProps {
   master: Master
@@ -12,6 +14,9 @@ interface MasterCardProps {
 const MasterCard: FC<MasterCardProps> = ({ master, reload }) => {
   const { t } = useTranslation()
   const [count, setCount] = useState()
+  const deleteThis = async () => {
+    await deleteMaster(master.id)
+  }
   useEffect(() =>{
     const fetch = async () =>{
       const response = await getAciveContractsCount(master.id)
@@ -26,6 +31,10 @@ const MasterCard: FC<MasterCardProps> = ({ master, reload }) => {
         <div className='nickname'>{t("nickname")}: {master.nickname}</div>
         <div className='display-name'>{t('display_name')}: {master.display_name}</div>
         <div className='display-name'>{t('active_contact')}: {count}</div>
+      </div>
+      <div className='servant-control'>
+        <EditButton></EditButton>
+        <DeleteButton deleteServant={deleteThis} reload={reload}></DeleteButton>
       </div>
     </div >
 
