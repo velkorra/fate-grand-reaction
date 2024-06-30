@@ -39,14 +39,14 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         console.error('Error fetching image:', error);
       }
       const name = await getName(t('lang'), servant.id)
-      servant.name = name
+      setTrueName(name)
       
       console.log(servant);
       
     };
 
     fetchImage();
-  }, [servant]);
+  }, []);
   const handleDelete = async (servant_id: number) => {
     await deleteServant(servant_id)
   }
@@ -66,7 +66,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         )}
       </div>
       <div className='servant-details'>
-        <h3 className='servant-name'>{servant.name}</h3>
+        <h3 className='servant-name'>{trueName || servant.name}</h3>
         <p className='servant-class'>{t('class')}: {t(`servant.${servant.className}`)}</p>
         <p className='servant-ascension'>{t('asc_level')}: {servant.ascensionLevel}</p>
         <p className='servant-level'>{t('level')}: {servant.level}</p>

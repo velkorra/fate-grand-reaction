@@ -12,13 +12,17 @@ const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error] = useState<string | null>(null)
   const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 1000))
-  const reload = () => {setLastUpdated(Math.floor(Date.now() / 1000))}
+  const reload = () => { setLastUpdated(Math.floor(Date.now() / 1000)) }
+  const [highlighted, setHighlighted] = useState('servant')
+  const isHighlighted = (a: string) => {
+    return highlighted === a
+  }
   useEffect(() => {
     const loadServants = async () => {
       setLoading(true)
       const data = await getServants()
       setData(data)
-      setLoading(false) 
+      setLoading(false)
     }
     loadServants()
   }, [lastUpdated])
@@ -29,8 +33,47 @@ const App: FC = () => {
 
   return (
     <>
-
       <Header></Header>
+      <div className='subheader'>
+        <div className="nav lora">
+          <div
+            onClick={() => setHighlighted('servant')}
+            style={{ textDecoration: isHighlighted('servant') ? 'underline' : 'none' }}
+          >
+            Персонажи
+          </div>
+          <div
+            onClick={() => setHighlighted('master')}
+            style={{ textDecoration: isHighlighted('master') ? 'underline' : 'none' }}
+          >
+            Игроки
+          </div>
+          <div
+            onClick={() => setHighlighted('contract')}
+            style={{ textDecoration: isHighlighted('contract') ? 'underline' : 'none' }}
+          >
+            Контракты
+          </div>
+          <div
+            onClick={() => setHighlighted('np')}
+            style={{ textDecoration: isHighlighted('np') ? 'underline' : 'none' }}
+          >
+            Фантазмы
+          </div>
+          <div
+            onClick={() => setHighlighted('skill')}
+            style={{ textDecoration: isHighlighted('skill') ? 'underline' : 'none' }}
+          >
+            Навыки
+          </div>
+          <div
+            onClick={() => setHighlighted('query')}
+            style={{ textDecoration: isHighlighted('query') ? 'underline' : 'none' }}
+          >
+            Запросы
+          </div>
+        </div>
+      </div>
       <div className="main-window">
         {data && (<ServantList reload={reload} servants={data}></ServantList>)}
 

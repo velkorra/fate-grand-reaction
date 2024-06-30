@@ -16,7 +16,7 @@ body {
 .main-window {
     width: 70%;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     gap: 10px;

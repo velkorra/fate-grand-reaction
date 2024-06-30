@@ -11,7 +11,30 @@
     color: white;
     z-index: 9999;
 }
-
+.subheader{
+    position: fixed;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40px;;
+    left: 15.5%;
+    height: 40px;
+    width: 69%;
+    background: url("../bg_bar.png");
+    color: white;
+    z-index: 998;
+    gap: 20px;
+}
+.subheader .nav{
+    
+    display: flex;
+    gap: 20px;
+}
+.subheader .nav div{
+    cursor: pointer;
+    font-size: large;
+}
 .header-logo {
     width: 50px;
     height: auto;
