@@ -88,3 +88,16 @@ export const createMaster = async (formData : FormData) : Promise<any> => {
         alert(error)
     }
 }
+export const editMaster = async (formData : FormData, master_id : number) : Promise<any> => {
+    try{
+        const response = await axios.put(BASE_URL + `masters/${master_id}`, formData,{
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        return response
+    }
+    catch (error){
+        alert(error)
+    }
+}
