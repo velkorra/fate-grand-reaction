@@ -39,7 +39,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         console.error('Error fetching image:', error);
       }
       const name = await getName(t('lang'), servant.id)
-      if (name !== "None") servant.name = name
+      servant.name = name
       
       console.log(servant);
       
