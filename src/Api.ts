@@ -50,3 +50,7 @@ export const getLocalization = async (language: string, servant_id: number): Pro
     })
     return response
 }
+export const getName = async (language : string, servant_id : number): Promise<string> =>{
+    const response = await axios.get(BASE_URL + `name/${servant_id}/${language}`)
+    return response.data.name
+}

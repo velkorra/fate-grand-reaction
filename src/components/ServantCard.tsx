@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import EditButton from './EditButton'
 import axios, { isAxiosError } from 'axios'
 import DeleteButton from './DeleteButton'
-import { deleteServant } from '../Api'
+import { deleteServant, getName } from '../Api'
 import InfoButton from './InfoButton'
 interface ServantCardProps {
   reload: () => void
@@ -16,7 +16,10 @@ interface ServantCardProps {
 const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
   const { t } = useTranslation()
   const [imageUrl, setImageUrl] = useState<string>('');
+  const [trueName, setTrueName] = useState<string>("none")
+  
   useEffect(() => {
+    setTrueName(servant.name)
     const fetchImage = async () => {
       try {
         const response = await axios.get('http://localhost:8000/get_image/', {
@@ -35,6 +38,11 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         }
         console.error('Error fetching image:', error);
       }
+      const name = await getName(t('lang'), servant.id)
+      if (name !== "None") servant.name = name
+      
+      console.log(servant);
+      
     };
 
     fetchImage();

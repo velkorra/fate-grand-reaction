@@ -1,7 +1,6 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
-import axios from "axios";
 import { addLocalization, createServant } from "../Api";
 
 type ServantCreateProps = {
@@ -10,7 +9,6 @@ type ServantCreateProps = {
 };
 
 const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
-    // State for the form fields
     const { t } = useTranslation()
     const servantOptions = t('servant', { returnObjects: true });
     const alignmentOptions = t('alignments', { returnObjects: true });
@@ -47,10 +45,8 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
     const toggleLanguage = () => {
         setLanguage((prevLanguage) => (prevLanguage === 'english' ? 'russian' : 'english'));
     };
-    // State for the attached file
     const [file, setFile] = useState<File | null>(null);
 
-    // Handle change in form fields
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setServant({
@@ -69,7 +65,6 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
         }));
         console.log(servant);
     };
-    // Handle file attachment
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files
         if (selectedFile) {
@@ -115,11 +110,9 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
                 console.log('Form submitted successfully.');
                 onClose();
             } else {
-                // Handle error
                 console.error('Form submission failed.');
             }
         } catch (error) {
-            // Handle network error
             console.error('Network error:', error);
         }
     };
