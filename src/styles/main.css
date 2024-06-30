@@ -3,6 +3,7 @@
 @import url("fonts.css");
 @import url("servantList.css");
 @import url("servantCreate.css");
+@import url("masterCard.css");
 
 body {
     /* background-color: hsl(225deg 15% 18% / 90%); */

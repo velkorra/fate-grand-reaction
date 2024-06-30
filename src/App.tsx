@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { getServants } from "./Api";
 import ServantList from "./components/ServantList";
 import './i18n'
+import MasterList from "./components/MasterList";
 
 const App: FC = () => {
 
@@ -75,7 +76,17 @@ const App: FC = () => {
         </div>
       </div>
       <div className="main-window">
-        {data && (<ServantList reload={reload} servants={data}></ServantList>)}
+        {highlighted === 'servant' ? (
+          <div>
+            {data && (<ServantList reload={reload} servants={data}></ServantList>)}
+          </div>
+        )
+          :
+        highlighted==='master'? (
+          <div>
+            <MasterList reload={reload}></MasterList>
+          </div>
+        ):''}
 
       </div>
     </>

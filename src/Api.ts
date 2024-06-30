@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Servant } from "./models/servant";
 import { ServantData } from "./schemas";
+import { Master } from "./models/master";
 const BASE_URL = 'http://127.0.0.1:8000/'
 
 export const getServants = async (): Promise<Servant[]> => {
@@ -53,4 +54,9 @@ export const getLocalization = async (language: string, servant_id: number): Pro
 export const getName = async (language : string, servant_id : number): Promise<string> =>{
     const response = await axios.get(BASE_URL + `name/${servant_id}/${language}`)
     return response.data.name
+}
+
+export const getMasters = async () : Promise<Master[]> =>{
+    const response = await axios.get(BASE_URL + 'masters')
+    return response.data
 }

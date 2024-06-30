@@ -1,5 +1,5 @@
 import '../styles/main.css'
-import Master from './Master'
+import Master from './MasterCard'
 import Servant from './ServantCard'
 
 const Contract = ({data}) => {

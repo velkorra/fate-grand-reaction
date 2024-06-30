@@ -3,8 +3,8 @@ import '../styles/main.css'
 import { Servant } from '../models/servant';
 import ServantCard from './ServantCard';
 import { useTranslation } from 'react-i18next';
+import ServantCreate from './ServantCreate';
 
-import Modal from './ServantCreate';
 
 interface ServantListProps {
   reload: () => void
@@ -28,7 +28,7 @@ const ServantList: FC<ServantListProps> = ({ servants, reload }) => {
         ))}
       </div>
       {state === "opened"? (
-        <Modal reload={reload} onClose={closeCreateWindow}></Modal>
+        <ServantCreate reload={reload} onClose={closeCreateWindow}></ServantCreate>
         // <div className='popup-effect'></div>
       ):''}
     </div>
