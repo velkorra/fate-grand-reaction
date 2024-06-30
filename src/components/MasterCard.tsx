@@ -34,7 +34,7 @@ const MasterCard: FC<MasterCardProps> = ({ master, reload }) => {
         <div className='display-name'>{t('display_name')}: {master.display_name}</div>
         <div className='display-name'>{t('active_contact')}: {count}</div>
       </div>
-      <div className='servant-control' style={{width: "25%"}}>
+      <div className='servant-control' style={{width: "35%"}}>
         <EditButton></EditButton>
         <DeleteButton deleteServant={deleteThis} reload={reload}></DeleteButton>
       </div>
