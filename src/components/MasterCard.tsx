@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { deleteMaster, getAciveContractsCount } from '../Api';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
+import { capitalize } from '../capitalize';
 
 interface MasterCardProps {
   master: Master
@@ -29,10 +30,11 @@ const MasterCard: FC<MasterCardProps> = ({ master, reload }) => {
       <div className='master-info'>
         <div className='id'>{"id"}: {master.id}</div>
         <div className='nickname'>{t("nickname")}: {master.nickname}</div>
+        <div className='display-name'>{capitalize(t('level'))}: {master.level}</div>
         <div className='display-name'>{t('display_name')}: {master.display_name}</div>
         <div className='display-name'>{t('active_contact')}: {count}</div>
       </div>
-      <div className='servant-control'>
+      <div className='servant-control' style={{width: "25%"}}>
         <EditButton></EditButton>
         <DeleteButton deleteServant={deleteThis} reload={reload}></DeleteButton>
       </div>
