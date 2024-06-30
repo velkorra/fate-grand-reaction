@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosPromise } from "axios";
 import { Servant } from "./models/servant";
 import { ServantData } from "./schemas";
 import { Master } from "./models/master";
@@ -60,3 +60,8 @@ export const getMasters = async () : Promise<Master[]> =>{
     const response = await axios.get(BASE_URL + 'masters')
     return response.data
 }
+
+export const getAciveContractsCount = async (master_id : number) :Promise<any>=>{
+    const response = await axios.get(BASE_URL + `masters/${master_id}/active_count`)
+    return response.data["count"]
+} 
