@@ -41,7 +41,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
       const name = await getName(t('lang'), servant.id)
       setTrueName(name)
       
-      console.log(servant);
+
       
     };
 

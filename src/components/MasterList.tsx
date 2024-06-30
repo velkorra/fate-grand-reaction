@@ -25,15 +25,17 @@ const MasterList: FC<MasterListProps> = ({reload }) => {
       setMasters(response)
     }
     getData()
+    
   }, [])
   return (
     <div>
+      
       <div className='master-list'>
         <div className='create-card' onClick={openCreateWindow}>
-          {t('create')}
+          {t('create_master')}
         </div>
-        {masters.map((master: Master, id: number) => (
-          <MasterCard key={id} master={master} reload={reload}></MasterCard>
+        {masters.map((master: Master) => (
+          <MasterCard key={master.id} master={master} reload={reload}></MasterCard>
         ))}
       </div>
       {/* {state === "opened"? (

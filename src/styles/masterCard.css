@@ -4,7 +4,6 @@
 }
 
 .master-card {
-    display: flex;
     position: relative;
     height: 100px;
     background: #f9f9f9;
@@ -14,4 +13,23 @@
     margin: 16px 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+}
+
+/* .master-card .nickname {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.master-card .display-name {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+} */
+.master-card .master-info{
+    display: flex;
+    gap: 5%;
+    flex-direction: column;
+    height: 80%;
 }
