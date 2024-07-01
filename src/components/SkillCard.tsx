@@ -11,6 +11,7 @@ import { NoblePhantasm } from '../models/NoblePhantasm';
 import SkillEdit from './SkillEdit';
 import { FaPlus } from 'react-icons/fa';
 import { isAxiosError } from 'axios';
+import { capitalize } from '../capitalize';
 
 
 interface SkillCardProps {
@@ -54,7 +55,7 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
                         <img
                             src={imageUrl}
                             alt={`${skill.name}`}
-                            className='servant-image'
+                            className='skill-icon'
                         />
                     ) : (<div>
                         <p>Loading...</p>
@@ -62,15 +63,13 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
                     )}
                 </div>
                 <div className='servant-info'>
-                    <div className='name'>{t('name')}: {skill.name}</div>
-                    <div className='rank'>{t('rank')}: {skill.rank}</div>
-                    <div className='activation-type'>{t('activation_type')}: {skill.skill_type}</div>
-                    <div className='description'>{t('description')}: {skill.description}</div>
+                    <div className='skill-title'>{capitalize(skill.name)} ({skill.rank.toUpperCase()})</div>
+                    <div className='skill-rank'>{skill.skill_type}</div>
+                    <div className='description'>{skill.description}</div>
                 </div>
-                <div className='servant-control'>
-                    <EditButton reload={reload} onClick={openModal} />
+                <div className='skill-control'>
+                    <EditButton reload={reload} onClick={openModal}/>
                     <DeleteButton reload={reload} deleteServant={deleteThis} />
-
                 </div>
             </div>
             {isModalOpen && (

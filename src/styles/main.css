@@ -4,6 +4,7 @@
 @import url("servantList.css");
 @import url("servantCreate.css");
 @import url("masterCard.css");
+@import url("skill.css");
 
 body {
     /* background-color: hsl(225deg 15% 18% / 90%); */
