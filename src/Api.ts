@@ -201,3 +201,44 @@ export const deleteNoblePhantasm = async (servant_id: number): Promise<any> => {
     }
 }
 
+export const getSkills = async (): Promise<any> => {
+    try {
+        const response = await axios.get(BASE_URL + 'skills')
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const createSkill = async (skill : Skill): Promise<any> => {
+    try {
+        const response = await axios.post(BASE_URL + 'skills', skill)
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const UpdateSkill = async (skill : Skill): Promise<any> => {
+    try {
+        const response = await axios.put(BASE_URL + 'skills', skill)
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const addSkillPicture = async (formData: FormData, id: number): Promise<any> => {
+    const response = await axios.post(BASE_URL + `add_skill_picture/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+    })
+    return response
+}
+export const getSkillPicture = async (id: number): Promise<any> => {
+    const response = await axios.get(BASE_URL + `skill_picture/${id}`, {
+        responseType : "blob"
+    })
+    return response
+}
