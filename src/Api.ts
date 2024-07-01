@@ -8,7 +8,7 @@ export const getServants = async (): Promise<Servant[]> => {
     try {
         const response = await axios.get<ServantData[]>(BASE_URL + 'servants')
 
-        return response.data.map(s => new Servant(s.id, s.name, s.class_name, s.ascension_level, s.level));;
+        return response.data.map(s => new Servant(s.id, s.name, s.class_name, s.ascension_level, s.level, s.alignment, s.gender));;
     } catch (error) {
         console.error('Ошибка при получении данных:', error);
         return [];
@@ -100,4 +100,25 @@ export const editMaster = async (formData : FormData, master_id : number) : Prom
     catch (error){
         alert(error)
     }
+}
+export const updateLocalization = async (formData: FormData, language: string, servant_id: number): Promise<any> => {
+    const response = await axios.put(BASE_URL + 'localization', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        params: {
+            "language": language,
+            "servant_id" : servant_id
+        }
+    })
+    return response
+}
+
+export const updateServant = async (formData: FormData, servant_id : number): Promise<any> => {
+    const response = await axios.put(BASE_URL + `servants/${servant_id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    return response
 }

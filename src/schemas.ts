@@ -4,4 +4,6 @@ export interface ServantData {
     class_name: string;
     ascension_level: number;
     level: number;
+    alignment : string;
+    gender : string
 }

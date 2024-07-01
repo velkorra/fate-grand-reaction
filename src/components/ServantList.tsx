@@ -12,6 +12,7 @@ interface ServantListProps {
 }
 
 const ServantList: FC<ServantListProps> = ({ servants, reload }) => {
+  
   const { t } = useTranslation()
   const [state, setState] = useState<string>("initial")
   const openCreateWindow = () => { setState('opened') }
