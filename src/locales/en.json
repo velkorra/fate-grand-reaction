@@ -21,6 +21,10 @@
     "info": "Information",
     "nickname": "Nickname",
     "display_name": "Public name",
+    "status" : "Status",
+    "summoned" :"Summoned",
+    "unsummoned" : "Not summoned",
+    "active_contract" : "Active contracts",
     "alignments": {
         "lawful_good": "lawful good",
         "neutral_good": "neutral good",

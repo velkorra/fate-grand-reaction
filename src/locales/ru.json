@@ -21,6 +21,10 @@
     "info": "Подробнее",
     "nickname": "Никнейм",
     "display_name": "Отображаемое имя",
+    "status" : "Статус",
+    "summoned" :"Призван",
+    "unsummoned" : "Не призван",
+    "active_contract" : "Активные контракты",
     "alignments": {
         "lawful_good": "законопослушно-добрый",
         "neutral_good": "нейтрально-добрый",

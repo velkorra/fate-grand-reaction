@@ -1,7 +1,7 @@
 import React, { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
-import { addLocalization, createServant, getLocalization, updateLocalization, updateServant } from "../Api";
+import { addLocalization, addPicture, createServant, getLocalization, updateLocalization, updateServant } from "../Api";
 import { Servant } from "../models/servant";
 import { servantLocalization } from "../models/servantLocalization";
 
@@ -111,6 +111,11 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
 
             await updateLocalization(russianFormData, "ru", currentServant.id)
             await updateLocalization(englishFormData, "en", currentServant.id)
+            if (file){
+                const fileData = new FormData()
+                fileData.append("file", file)
+                await addPicture(fileData, currentServant.id)
+            }
             reload()
             if (response.status === 200) {
                 console.log('Form submitted successfully.');
@@ -169,7 +174,15 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
                                 <option value="male">{capitalize(t('male'))}</option>
                                 <option value="female">{capitalize(t('female'))}</option>
                             </select>
-                            
+                            <label htmlFor="file-upload" className="custom-file-upload">
+                                {t('attach_photo')}
+                            </label>
+                            <input id="file-upload" type="file" onChange={handleFileChange} />
+                            {previewUrl && (
+                                <div>
+                                    <img src={previewUrl} alt="Preview" className="select-picture" />
+                                </div>
+                            )}
                             <button type="submit">Submit</button>
                         </div>
                         <div className="subform scrolling">

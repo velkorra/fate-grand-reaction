@@ -24,6 +24,8 @@ interface servantLocalization {
   intro: string;
 }
 const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
+  console.log(servant);
+  
   const { t } = useTranslation()
   const [ruLoc, setRuLoc] = useState<servantLocalization>()
   const [enLoc, setEnLoc] = useState<servantLocalization>()
@@ -89,6 +91,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         <p className='servant-ascension'>{t('asc_level')}: {servant.ascensionLevel}</p>
         <p className='servant-level'>{t('level')}: {servant.level}</p>
         <p className='servant-level'>{t('alignment')}: {servant.alignment ? t(`alignments.${servant.alignment}`) : ''}</p>
+        <p className='servant-level'>{t('status')}: {t(servant.state)}</p>
         <div className='servant-control'>
           <EditButton reload={reload} onClick={openModal}></EditButton>
           <DeleteButton deleteServant={() => handleDelete(servant.id)} reload={reload}></DeleteButton>

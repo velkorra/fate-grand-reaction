@@ -6,4 +6,13 @@ export interface ServantData {
     level: number;
     alignment : string;
     gender : string
+    state : string
+}
+export interface Contract {
+    servant_id : number;
+    master_id : number;
+    command_spells : number
+    status : string
+    start_date : string
+    end_date : string
 }

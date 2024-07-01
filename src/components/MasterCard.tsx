@@ -40,7 +40,7 @@ const MasterCard: FC<MasterCardProps> = ({ master, reload }) => {
           <div className='nickname'>{t("nickname")}: {master.nickname}</div>
           <div className='display-name'>{capitalize(t('level'))}: {master.level}</div>
           <div className='display-name'>{t('display_name')}: {master.display_name}</div>
-          <div className='display-name'>{t('active_contact')}: {count}</div>
+          <div className='display-name'>{t('active_contract')}: {count}</div>
         </div>
         <div className='servant-control' style={{ width: "35%" }}>
           <EditButtonMaster reload={reload} onClick={openModal} ></EditButtonMaster>

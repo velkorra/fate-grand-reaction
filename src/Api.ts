@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Servant } from "./models/servant";
-import { ServantData } from "./schemas";
+import { Contract, ServantData } from "./schemas";
 import { Master } from "./models/master";
 const BASE_URL = 'http://127.0.0.1:8000/'
 
@@ -8,7 +8,7 @@ export const getServants = async (): Promise<Servant[]> => {
     try {
         const response = await axios.get<ServantData[]>(BASE_URL + 'servants')
 
-        return response.data.map(s => new Servant(s.id, s.name, s.class_name, s.ascension_level, s.level, s.alignment, s.gender));;
+        return response.data.map(s => new Servant(s.id, s.name, s.class_name, s.ascension_level, s.level, s.alignment, s.gender, s.state));;
     } catch (error) {
         console.error('Ошибка при получении данных:', error);
         return [];
@@ -74,6 +74,19 @@ export const deleteMaster = async (master_id: number): Promise<string> => {
         return "Servant not found"
     }
 }
+export const deleteContract = async (servant_id : number, master_id: number): Promise<string> => {
+    try {
+        const response = await axios.delete(BASE_URL + `masters/`, {
+            params: {
+                "servant_id" : servant_id,
+                "master_id" : master_id
+            }
+        })
+        return response.data
+    } catch (error) {
+        return "Servant not found"
+    }
+}
 
 export const createMaster = async (formData : FormData) : Promise<any> => {
     try{
@@ -121,4 +134,17 @@ export const updateServant = async (formData: FormData, servant_id : number): Pr
         }
     })
     return response
+}
+export const addPicture = async (formData: FormData, servant_id : number): Promise<any> => {
+    const response = await axios.post(BASE_URL + `add_image/${servant_id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    return response
+}
+
+export const getContracts = async (): Promise<Contract[]> => {
+    const response = await axios.get(BASE_URL + 'contracts/all')
+    return response.data
 }

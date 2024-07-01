@@ -6,6 +6,7 @@ import { getServants } from "./Api";
 import ServantList from "./components/ServantList";
 import './i18n'
 import MasterList from "./components/MasterList";
+import ContractList from "./components/ContractList";
 
 const App: FC = () => {
 
@@ -82,11 +83,16 @@ const App: FC = () => {
           </div>
         )
           :
-        highlighted==='master'? (
-          <div>
-            <MasterList reload={reload}></MasterList>
-          </div>
-        ):''}
+          highlighted === 'master' ? (
+            <div>
+              <MasterList reload={reload}></MasterList>
+            </div>
+          ) : 
+          highlighted === 'contract' ? (
+            <div>
+              <ContractList reload={reload}></ContractList>
+            </div>
+          ): ''}
 
       </div>
     </>
