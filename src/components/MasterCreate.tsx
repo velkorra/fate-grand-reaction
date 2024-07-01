@@ -21,8 +21,7 @@ const MasterCreate: FC<MasterCreateProps> = ({ onClose, reload }) => {
             ...master,
             [name]: value
         });
-        console.log(master);
-        
+
     };
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -47,9 +46,9 @@ const MasterCreate: FC<MasterCreateProps> = ({ onClose, reload }) => {
         <div className="modal-overlay">
             <div className="modal">
                 <button className="close-button" onClick={onClose}>&times;</button>
-                <div className="content edit-window" style={{width : "200px"}}>
-                        <form onSubmit={handleSubmit}>
-                    <div className='subform'>
+                <div className="content edit-window" style={{ width: "200px" }}>
+                    <form onSubmit={handleSubmit}>
+                        <div className='subform'>
                             <label>
                                 {capitalize(t('nickname'))}:
                             </label>
@@ -59,8 +58,8 @@ const MasterCreate: FC<MasterCreateProps> = ({ onClose, reload }) => {
                             </label>
                             <input type="text" name="display_name" value={master.display_name} onChange={handleChange} required />
                             <button type="submit">Submit</button>
-                    </div>
-                        </form>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -33,3 +33,7 @@
     flex-direction: column;
     height: 80%;
 }
+.create-container{
+    display: flex;
+    flex-direction: column;
+}

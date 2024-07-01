@@ -13,6 +13,8 @@
 }
 
 .modal {
+    align-items: center;
+    display: flex;
     background-color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 10px;
@@ -109,7 +111,14 @@ input[type="file"] {
 input[type="file"] {
     display: none;
 }
-
+.input {
+    width: 87%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    font-size: 16px;
+}
 .custom-file-upload {
     display: inline-block;
     width: 87%;
@@ -147,7 +156,7 @@ button[type="submit"]:hover {
 }
 
 select {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 10px;
     
     border: 1px solid #d3d3d3;

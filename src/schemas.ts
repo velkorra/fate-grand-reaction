@@ -16,3 +16,7 @@ export interface Contract {
     start_date : string
     end_date : string
 }
+export interface master{
+    id: number
+    nickname : string
+}

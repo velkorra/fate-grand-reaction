@@ -7,6 +7,7 @@ import ServantList from "./components/ServantList";
 import './i18n'
 import MasterList from "./components/MasterList";
 import ContractList from "./components/ContractList";
+import NoblePhantasmList from "./components/NoblePhantasmList";
 
 const App: FC = () => {
 
@@ -91,6 +92,11 @@ const App: FC = () => {
           highlighted === 'contract' ? (
             <div>
               <ContractList reload={reload}></ContractList>
+            </div>
+          ): 
+          highlighted === 'np' ? (
+            <div>
+              <NoblePhantasmList reload={reload}></NoblePhantasmList>
             </div>
           ): ''}
 

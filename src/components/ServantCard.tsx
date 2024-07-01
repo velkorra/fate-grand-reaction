@@ -24,8 +24,7 @@ interface servantLocalization {
   intro: string;
 }
 const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
-  console.log(servant);
-  
+
   const { t } = useTranslation()
   const [ruLoc, setRuLoc] = useState<servantLocalization>()
   const [enLoc, setEnLoc] = useState<servantLocalization>()

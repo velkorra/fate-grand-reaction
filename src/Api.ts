@@ -2,6 +2,7 @@ import axios from "axios";
 import { Servant } from "./models/servant";
 import { Contract, ServantData } from "./schemas";
 import { Master } from "./models/master";
+import { NoblePhantasm } from "./models/NoblePhantasm";
 const BASE_URL = 'http://127.0.0.1:8000/'
 
 export const getServants = async (): Promise<Servant[]> => {
@@ -74,12 +75,12 @@ export const deleteMaster = async (master_id: number): Promise<string> => {
         return "Servant not found"
     }
 }
-export const deleteContract = async (servant_id : number, master_id: number): Promise<string> => {
+export const deleteContract = async (servant_id: number, master_id: number): Promise<string> => {
     try {
-        const response = await axios.delete(BASE_URL + `masters/`, {
+        const response = await axios.delete(BASE_URL + 'contracts', {
             params: {
-                "servant_id" : servant_id,
-                "master_id" : master_id
+                "servant_id": servant_id,
+                "master_id": master_id
             }
         })
         return response.data
@@ -88,29 +89,29 @@ export const deleteContract = async (servant_id : number, master_id: number): Pr
     }
 }
 
-export const createMaster = async (formData : FormData) : Promise<any> => {
-    try{
-        const response = await axios.post(BASE_URL + 'masters', formData,{
+export const createMaster = async (formData: FormData): Promise<any> => {
+    try {
+        const response = await axios.post(BASE_URL + 'masters', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
         return response
     }
-    catch (error){
+    catch (error) {
         alert(error)
     }
 }
-export const editMaster = async (formData : FormData, master_id : number) : Promise<any> => {
-    try{
-        const response = await axios.put(BASE_URL + `masters/${master_id}`, formData,{
+export const editMaster = async (formData: FormData, master_id: number): Promise<any> => {
+    try {
+        const response = await axios.put(BASE_URL + `masters/${master_id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
         return response
     }
-    catch (error){
+    catch (error) {
         alert(error)
     }
 }
@@ -121,13 +122,13 @@ export const updateLocalization = async (formData: FormData, language: string, s
         },
         params: {
             "language": language,
-            "servant_id" : servant_id
+            "servant_id": servant_id
         }
     })
     return response
 }
 
-export const updateServant = async (formData: FormData, servant_id : number): Promise<any> => {
+export const updateServant = async (formData: FormData, servant_id: number): Promise<any> => {
     const response = await axios.put(BASE_URL + `servants/${servant_id}`, formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -135,7 +136,7 @@ export const updateServant = async (formData: FormData, servant_id : number): Pr
     })
     return response
 }
-export const addPicture = async (formData: FormData, servant_id : number): Promise<any> => {
+export const addPicture = async (formData: FormData, servant_id: number): Promise<any> => {
     const response = await axios.post(BASE_URL + `add_image/${servant_id}`, formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -148,3 +149,55 @@ export const getContracts = async (): Promise<Contract[]> => {
     const response = await axios.get(BASE_URL + 'contracts/all')
     return response.data
 }
+export const createContract = async (servant_id: number, master_id: number): Promise<any> => {
+    try {
+        const response = await axios.post(BASE_URL + 'contracts', {
+            "servant_id": servant_id,
+            "master_id": master_id
+        }
+        )
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+
+export const getNoblePhantasms = async (): Promise<any> => {
+    try {
+        const response = await axios.get(BASE_URL + 'np/all')
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const updateNoblePhantasm = async (noble_phantasm: NoblePhantasm): Promise<any> => {
+    try {
+        const response = await axios.put(BASE_URL + 'np', noble_phantasm)
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const createNoblePhantasm = async (noble_phantasm : NoblePhantasm): Promise<any> => {
+    try {
+        const response = await axios.post(BASE_URL + 'np', noble_phantasm)
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const deleteNoblePhantasm = async (servant_id: number): Promise<any> => {
+    try {
+        const response = await axios.post(BASE_URL + 'contracts'
+        )
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+
