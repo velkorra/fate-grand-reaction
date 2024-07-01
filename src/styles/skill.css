@@ -1,15 +1,18 @@
 .skill-icon {
     height: 80%;
 }
-.skill-title{
+
+.skill-title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 800;
 }
-.skill-control{
+
+.skill-control {
     position: absolute;
     top: 0;
     right: 0
 }
+
 .skill-card {
     display: flex;
     position: relative;
@@ -23,5 +26,9 @@
     margin: 16px auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
+}
+
+.skill-image-container {
+    margin-right: 5%;
+    height: 100%;
+}

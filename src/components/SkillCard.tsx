@@ -50,7 +50,7 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
     return (
         <div>
             <div className='skill-card'>
-                <div className='servant-image-container'>
+                <div className='skill-image-container'>
                     {imageUrl ? (
                         <img
                             src={imageUrl}
