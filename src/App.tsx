@@ -9,6 +9,7 @@ import MasterList from "./components/MasterList";
 import ContractList from "./components/ContractList";
 import NoblePhantasmList from "./components/NoblePhantasmList";
 import SkillList from "./components/SkillList";
+import QueryList from "./components/QueryList";
 
 const App: FC = () => {
 
@@ -103,6 +104,11 @@ const App: FC = () => {
           highlighted === 'skill' ? (
             <div>
               <SkillList reload={reload}></SkillList>
+            </div>
+          ): 
+          highlighted === 'query' ? (
+            <div>
+              <QueryList></QueryList>
             </div>
           ): ''}
 

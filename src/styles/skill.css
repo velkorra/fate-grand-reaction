@@ -8,19 +8,20 @@
 }
 
 .skill-control {
-    position: absolute;
-    top: 0;
-    right: 0
+    padding-right: 0;
 }
-
+.skill-description{
+    overflow-y: scroll;
+    max-height: 80px;
+}
 .skill-card {
     display: flex;
     position: relative;
-    height: 80px;
+    height: 120px;
     background: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 16px;
+    padding: 6px 16px;
     width: 80%;
     ;
     margin: 16px auto;

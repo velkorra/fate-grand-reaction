@@ -49,7 +49,7 @@ const ContractCreate: FC<ContractCreateProps> = ({ onClose, reload, servants, ma
         <div className="modal-overlay">
             <div className="modal">
                 <button className="close-button" onClick={onClose}>&times;</button>
-                <div className="content edit-window" style={{ width: "200px" }}>
+                <div className="content edit-window" style={{ width: "300px" }}>
                     <form onSubmit={handleSubmit}>
                         <div className='subform'>
                             <label>
@@ -67,7 +67,7 @@ const ContractCreate: FC<ContractCreateProps> = ({ onClose, reload, servants, ma
                                 <select name="master_id" value={contract.master_id} onChange={handleChange} required>
                                     <option value={0}>Select a master</option>
                                     {masters.map(master => (
-                                        <option key={master.id} value={master.id}>{master.nickname}</option>
+                                        <option key={master.id} value={master.id}>{master.display_name} ({master.nickname})</option>
                                     ))}
                                 </select>
                             </label>

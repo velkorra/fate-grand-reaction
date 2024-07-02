@@ -13,6 +13,9 @@
     "undefined": "undefined",
     "create": "Create new Servant",
     "create_master" : "Create new player",
+    "create_contract" : "Create new contract",
+    "create_noble_phantasm" : "Create Phantasm",
+    "add_localization" : "Add details",
     "delete": "delete",
     "confirm_delete": "Confirm delete",
     "are_you_sure_delete": "Are you sure you want to delete?",
@@ -50,7 +53,8 @@
         "alter_ego": "Alter Ego",
         "foreigner": "Foreigner",
         "pretender": "Pretender",
-        "mooncancer": "Moon Cancer"
+        "mooncancer": "Moon Cancer",
+        "minion" : "Minion"
     },
     "description": "Description",
     "history": "History",

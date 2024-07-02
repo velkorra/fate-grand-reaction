@@ -7,6 +7,8 @@
     "edit": "Изменить",
     "create": "Создать нового слугу",
     "create_master" : "Добавить игрока",
+    "create_contract" : "Создать контракт",
+    "create_noble_phantasm" : "Создать фантазм",
     "alignment": "Мировоззрение",
     "gender": "Пол",
     "male": "мужской",
@@ -16,6 +18,7 @@
     "delete": "удалить",
     "confirm_delete": "Подтвердить удаление",
     "are_you_sure_delete": "Вы уверены, что хотите удалить?",
+    "add-localization" : "Добавить информацию",
     "confirm": "Подтвердить",
     "cancel": "Отменить",
     "info": "Подробнее",
@@ -50,7 +53,8 @@
         "alter_ego": "Альтер Эго",
         "foreigner": "Форейнер",
         "pretender": "Претендент",
-        "mooncancer": "Мункансер"
+        "mooncancer": "Мункансер",
+        "minion" : "Миньон"
     },
     "description": "Описание",
     "history": "История",

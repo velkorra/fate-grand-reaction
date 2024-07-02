@@ -40,7 +40,7 @@ const ContractList: FC<ContractListProps> = ({ reload }) => {
 
       <div className='master-list'>
         <div className='create-card' onClick={openCreateWindow}>
-          {t('create_master')}
+          {t('create_contract')}
         </div>
         {contracts.map((contract: Contract, id: number) => (
           <ContractCard key={id} contract={contract} reload={reload}></ContractCard>

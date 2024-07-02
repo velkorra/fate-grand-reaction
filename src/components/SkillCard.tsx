@@ -46,7 +46,7 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
         }
         fetchIcon()
     }
-    )
+    ,[])
     return (
         <div>
             <div className='skill-card'>
@@ -65,7 +65,7 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
                 <div className='servant-info'>
                     <div className='skill-title'>{capitalize(skill.name)} ({skill.rank.toUpperCase()})</div>
                     <div className='skill-rank'>{skill.skill_type}</div>
-                    <div className='description'>{skill.description}</div>
+                    <div className='skill-description'>{skill.description}</div>
                 </div>
                 <div className='skill-control'>
                     <EditButton reload={reload} onClick={openModal}/>

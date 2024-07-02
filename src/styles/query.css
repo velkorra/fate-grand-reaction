@@ -1,0 +1,47 @@
+.query-list{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.query-item{
+    margin: 50px auto; 
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+.query-link{
+    text-decoration: underline;
+    color: aqua;
+    font-size: 2rem;
+}
+.query-description{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.json-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+  }
+  
+  .json-table th, .json-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .json-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .json-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .json-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .json-table th {
+    padding: 12px 8px;
+  }
