@@ -181,7 +181,7 @@ export const updateNoblePhantasm = async (noble_phantasm: NoblePhantasm): Promis
         alert(error)
     }
 }
-export const createNoblePhantasm = async (noble_phantasm : NoblePhantasm): Promise<any> => {
+export const createNoblePhantasm = async (noble_phantasm: NoblePhantasm): Promise<any> => {
     try {
         const response = await axios.post(BASE_URL + 'np', noble_phantasm)
         return response
@@ -210,7 +210,7 @@ export const getSkills = async (): Promise<any> => {
         alert(error)
     }
 }
-export const createSkill = async (skill : Skill): Promise<any> => {
+export const createSkill = async (skill: Skill): Promise<any> => {
     try {
         const response = await axios.post(BASE_URL + 'skills', skill)
         return response
@@ -219,7 +219,16 @@ export const createSkill = async (skill : Skill): Promise<any> => {
         alert(error)
     }
 }
-export const UpdateSkill = async (skill : Skill): Promise<any> => {
+export const deleteSkill = async (id : number): Promise<any> => {
+    try {
+        const response = await axios.delete(BASE_URL + `skills/${id}`, )
+        return response
+    }
+    catch (error) {
+        alert(error)
+    }
+}
+export const UpdateSkill = async (skill: Skill): Promise<any> => {
     try {
         const response = await axios.put(BASE_URL + 'skills', skill)
         return response
@@ -238,7 +247,27 @@ export const addSkillPicture = async (formData: FormData, id: number): Promise<a
 }
 export const getSkillPicture = async (id: number): Promise<any> => {
     const response = await axios.get(BASE_URL + `skill_picture/${id}`, {
-        responseType : "blob"
+        responseType: "blob"
     })
+    return response
+}
+export const getLevelAnalys = async (): Promise<any> => {
+    const response = await axios.get(BASE_URL + `level_analys`)
+    return response
+}
+export const getLocalizations = async (): Promise<any> => {
+    const response = await axios.get(BASE_URL + `all_localization`)
+    return response
+}
+export const getSummonedServants = async (): Promise<any> => {
+    const response = await axios.get(BASE_URL + `summoned_servants`)
+    return response
+}
+export const getFemales = async (): Promise<any> => {
+    const response = await axios.get(BASE_URL + `female_servants_descriptions`)
+    return response
+}
+export const getTopServants = async (): Promise<any> => {
+    const response = await axios.get(BASE_URL + `top_servants`)
     return response
 }

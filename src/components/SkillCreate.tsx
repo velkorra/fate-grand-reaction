@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import '../styles/main.css';
 import { useTranslation } from 'react-i18next';
-import { createNoblePhantasm, getName } from '../Api';
+import { createNoblePhantasm, createSkill, getName } from '../Api';
 import { PHANTASM_TYPES, RANKS } from '../constants';
 import { Servant } from '../models/servant';
 import { NoblePhantasm } from '../models/NoblePhantasm';
@@ -18,11 +18,25 @@ const SkillCreate: FC<SkillCreateProps> = ({ reload, onClose }) => {
     const [skillType, setSkillType] = useState('');
     const [description, setDescription] = useState('');
     const [skillId, setSkillId] = useState('')
+    const [file, setFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files
+        if (selectedFile) {
+            setFile(selectedFile[0]);
+        }
+        if (selectedFile) {
+            const url = URL.createObjectURL(selectedFile[0]);
+            setPreviewUrl(url);
+        } else {
+            setPreviewUrl(null);
+        }
+    };
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const updatedSkill = { name, rank, skill_type: skillType, description };
-        // await updateNoblePhantasm(updatedSkill);
+        const newSkill = { id : 1, name, rank, skill_type: skillType, description };
+        const response = await createSkill(newSkill);
         reload();
         onClose();
     };

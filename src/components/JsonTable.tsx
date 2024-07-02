@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+ 
+
 
 type Props = {
   data: Record<string, any>[];
@@ -12,7 +14,7 @@ type SortConfig = {
 const JsonTable: React.FC<Props> = ({ data }) => {
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
 
-  const sortedData = React.useMemo(() => {
+  const sortedData = useMemo(() => {
     let sortableItems = [...data];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
@@ -57,6 +59,9 @@ const JsonTable: React.FC<Props> = ({ data }) => {
               className={sortConfig?.key === header ? sortConfig.direction : ''}
             >
               {header}
+              {sortConfig?.key === header && (
+                sortConfig.direction === 'ascending' ? ' ⬆' : ' ⬇'
+              )}
             </th>
           ))}
         </tr>

@@ -5,3 +5,6 @@ interface Skill {
     name: string
     description: string
 }
+interface SkillCreate{
+    
+}

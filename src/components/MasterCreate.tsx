@@ -57,7 +57,7 @@ const MasterCreate: FC<MasterCreateProps> = ({ onClose, reload }) => {
                                 {capitalize(t('display_name'))}:
                             </label>
                             <input type="text" name="display_name" value={master.display_name} onChange={handleChange} required />
-                            <button type="submit">Submit</button>
+                            <button type="submit">Создать</button>
                         </div>
                     </form>
                 </div>

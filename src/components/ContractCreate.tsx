@@ -71,7 +71,7 @@ const ContractCreate: FC<ContractCreateProps> = ({ onClose, reload, servants, ma
                                     ))}
                                 </select>
                             </label>
-                            <button type="submit">Submit</button>
+                            <button type="submit">Создать</button>
                         </div>
                     </form>
                 </div>

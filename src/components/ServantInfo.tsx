@@ -21,7 +21,7 @@ const ServantInfo: FC<ServantInfoProps> = ({ servant }) => {
         loadDetails()
     }, [])
     return (
-        <div>
+        <div style={{overflowY: "scroll"}}>
             
             {details[0]!== "this servant has no info" ? (
                 <ul>

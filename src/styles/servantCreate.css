@@ -29,7 +29,8 @@
     max-height: 600px;
 }
 .edit-window{
-    width: 500px;
+    width: 600px;
+    z-index: 99999;
 }
 form {
     display: flex;
@@ -61,7 +62,7 @@ form {
 .content .add-localization{
     position: absolute;
     top: 10px;
-    right: 30%;
+    right: 15%;
 }
 .text-box{
     width: calc(100% - 20px);

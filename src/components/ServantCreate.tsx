@@ -172,7 +172,7 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
                                     <img src={previewUrl} alt="Preview" className="select-picture" />
                                 </div>
                             )}
-                            <button type="submit">Submit</button>
+                            <button type="submit">Создать</button>
                         </div>
                         <div className="subform scrolling">
                             <label>

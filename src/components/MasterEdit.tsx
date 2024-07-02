@@ -66,7 +66,7 @@ const MasterEdit: FC<MasterEditProps> = ({ onClose, reload, current_master }) =>
                                 {capitalize(t('level'))}:
                             </label>
                             <input type="number" name="level" value={master.level} onChange={handleChange} required />
-                            <button type="submit">Submit</button>
+                            <button type="submit">Сохранить</button>
                         </div>
                     </form>
                 </div>

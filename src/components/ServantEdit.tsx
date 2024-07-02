@@ -183,7 +183,7 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
                                     <img src={previewUrl} alt="Preview" className="select-picture" />
                                 </div>
                             )}
-                            <button type="submit">Submit</button>
+                            <button type="submit">Сохранить</button>
                         </div>
                         <div className="subform scrolling">
                             <label>

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
-import { deleteNoblePhantasm, getSkillPicture } from '../Api';
+import { deleteNoblePhantasm, deleteSkill, getSkillPicture } from '../Api';
 import NoblePhantasmEdit from './NoblePhantasmEdit';
 import { NoblePhantasm } from '../models/NoblePhantasm';
 import SkillEdit from './SkillEdit';
@@ -27,7 +27,7 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
     const closeModal = () => setIsModalOpen(false);
     const [imageUrl, setImageUrl] = useState<string>('');
     const deleteThis = async () => {
-        await deleteNoblePhantasm(skill.id);
+        await deleteSkill(skill.id);
         reload();
     };
     useEffect(() => {
