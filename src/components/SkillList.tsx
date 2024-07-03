@@ -31,7 +31,7 @@ const SkillList: FC<SkillListProps> = ({ reload }) => {
     <div>
       <div className='master-list'>
         <div className='create-card' onClick={openCreateWindow}>
-          {t('create')}
+          {t('Создать навык')}
         </div>
         {skills.map((skill: Skill, id: number) => (
           <SkillCard  skill={skill} key={id} reload={reload}></SkillCard>

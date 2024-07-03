@@ -8,7 +8,7 @@ i18n
       en: { translation: require('./locales/en.json') },
       ru: { translation: require('./locales/ru.json') }
     },
-    lng: 'ru',
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: { escapeValue: false }
   });
