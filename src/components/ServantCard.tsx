@@ -38,7 +38,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
     setTrueName(servant.name)
     const fetchImage = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/get_image/', {
+        const response = await axios.get('https://1pqzvstl-8000.euw.devtunnels.ms/get_image/', {
           params: {
             "servant_id": servant.id,
             "grade": servant.ascensionLevel

@@ -3,7 +3,7 @@ import { Servant } from "./models/servant";
 import { Contract, ServantData } from "./schemas";
 import { Master } from "./models/master";
 import { NoblePhantasm } from "./models/NoblePhantasm";
-const BASE_URL = 'http://127.0.0.1:8000/'
+const BASE_URL = 'https://1pqzvstl-8000.euw.devtunnels.ms/'
 
 export const getServants = async (): Promise<Servant[]> => {
     try {
