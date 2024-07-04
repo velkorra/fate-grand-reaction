@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import EditButton from './EditButton'
 import axios, { isAxiosError } from 'axios'
 import DeleteButton from './DeleteButton'
-import { deleteServant, getLocalization, getName } from '../Api'
+import { deleteServant, getLocalization, getName, getServantImage } from '../Api'
 import InfoButton from './InfoButton'
 import ServantEdit from './ServantEdit'
 interface ServantCardProps {
@@ -38,14 +38,8 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
     setTrueName(servant.name)
     const fetchImage = async () => {
       try {
-        const response = await axios.get('https://1pqzvstl-8000.euw.devtunnels.ms/get_image/', {
-          params: {
-            "servant_id": servant.id,
-            "grade": servant.ascensionLevel
-          },
-          responseType: 'blob',
-        });
-        setImageUrl(URL.createObjectURL(response.data));
+      const data = await getServantImage(servant.id, servant.ascensionLevel)
+        setImageUrl(URL.createObjectURL(data));
       } catch (error) {
         if (isAxiosError(error)) {
           if (error.response?.status === 404) {

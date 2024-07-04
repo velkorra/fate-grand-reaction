@@ -3,7 +3,10 @@ import { Servant } from "./models/servant";
 import { Contract, ServantData } from "./schemas";
 import { Master } from "./models/master";
 import { NoblePhantasm } from "./models/NoblePhantasm";
-const BASE_URL = 'https://1pqzvstl-8000.euw.devtunnels.ms/'
+// const BASE_URL = 'https://1pqzvstl-8000.euw.devtunnels.ms/'
+// const BASE_URL = 'http://127.0.0.1:8000/'
+const BASE_URL = 'http://127.0.0.1:80/'
+// const BASE_URL = 'https://d0jzr844-8000.euw.devtunnels.ms/'
 
 export const getServants = async (): Promise<Servant[]> => {
     try {
@@ -15,7 +18,16 @@ export const getServants = async (): Promise<Servant[]> => {
         return [];
     }
 }
-
+export const getServantImage = async(servant_id : number, grade : number) : Promise<any> => {
+    const response = await axios.get(BASE_URL + 'get_image/', {
+    params: {
+      "servant_id": servant_id,
+      "grade": grade
+    },
+    responseType: 'blob',
+  });
+  return response.data
+}
 export const deleteServant = async (servant_id: number): Promise<string> => {
     try {
         const response = await axios.delete(BASE_URL + `servants/${servant_id}`)
