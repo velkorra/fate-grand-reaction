@@ -5,8 +5,11 @@ import { Master } from "./models/master";
 import { NoblePhantasm } from "./models/NoblePhantasm";
 // const BASE_URL = 'https://1pqzvstl-8000.euw.devtunnels.ms/'
 // const BASE_URL = 'http://127.0.0.1:8000/'
-const BASE_URL = 'http://127.0.0.1:80/'
-// const BASE_URL = 'https://d0jzr844-8000.euw.devtunnels.ms/'
+// const BASE_URL = 'http://127.0.0.1:8080/api/'
+// const BASE_URL = 'https://d0jzr844-8080.euw.devtunnels.ms/api/'
+// const BASE_URL = 'https://d98wtxpk-8000.euw.devtunnels.ms//api/'
+// const BASE_URL = 'http://127.0.0.1:80/'
+const BASE_URL = 'https://d0jzr844-8000.euw.devtunnels.ms/'
 
 export const getServants = async (): Promise<Servant[]> => {
     try {
