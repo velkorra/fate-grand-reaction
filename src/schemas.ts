@@ -21,6 +21,21 @@ export interface ServantLocalization {
     temper: string;
     intro: string;
 }
+
+export interface ServantWhithLocalization extends ServantData {
+    localizations : ServantLocalization[]
+}
+
+export interface ServantUpdate {
+    name: string;
+    className: string;
+    alignment: string;
+    gender: string;
+}
+export interface FullServant extends ServantUpdate {
+
+}
+
 export interface Contract {
     servant_id: number;
     master_id: number;
@@ -30,9 +45,6 @@ export interface Contract {
     end_date: string
 }
 
-export interface ServantWhithLocalization extends ServantData {
-    localizations : ServantLocalization[]
-}
 
 
 export interface master {

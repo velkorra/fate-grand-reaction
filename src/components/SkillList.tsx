@@ -1,8 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import '../styles/main.css'
-import { Servant } from '../models/servant';
 import { useTranslation } from 'react-i18next';
-import ServantCreate from './ServantCreate';
 import SkillCard from './SkillCard';
 import { getSkills } from '../Api';
 import SkillCreate from './SkillCreate';
@@ -38,7 +36,6 @@ const SkillList: FC<SkillListProps> = ({ reload }) => {
       </div>
       {state === "opened"? (
         <SkillCreate  reload={reload} onClose={closeCreateWindow}></SkillCreate>
-        // <div className='popup-effect'></div>
       ):''}
     </div>
   );

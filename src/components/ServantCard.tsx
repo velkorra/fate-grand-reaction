@@ -1,7 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { Servant } from '../models/servant'
 import '../styles/main.css'
-
 import { useTranslation } from 'react-i18next'
 import EditButton from './EditButton'
 import axios, { isAxiosError } from 'axios'
@@ -19,8 +17,6 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
   const { t } = useTranslation()
   const [imageUrl, setImageUrl] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const ruLoc = servant.localizations.find(loc => loc.language === 'ru')
-  const enLoc = servant.localizations.find(loc => loc.language === 'en')
   const getLocalizedName = () => {
     const localization = servant.localizations.find(loc => loc.language === t("lang"));
     if (localization && localization.name) {
@@ -86,7 +82,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         <InfoButton servant={servant}></InfoButton>
       </div>
       {isModalOpen && (
-        <ServantEdit onClose={closeModal} reload={reload} currentServant={servant} ruLoc={ruLoc} enLoc={enLoc}></ServantEdit>
+        <ServantEdit onClose={closeModal} reload={reload} currentServant={servant}></ServantEdit>
       )}
     </div>
   );

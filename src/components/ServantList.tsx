@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react';
 import '../styles/main.css'
-import { Servant } from '../models/servant';
 import ServantCard from './ServantCard';
 import { useTranslation } from 'react-i18next';
 import ServantCreate from './ServantCreate';

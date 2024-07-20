@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Servant } from "./models/servant";
-import { Contract, ServantData, ServantWhithLocalization } from "./schemas";
+import { Contract, ServantData, ServantLocalization, ServantUpdate, ServantWhithLocalization } from "./schemas";
 import { Master } from "./models/master";
 import { NoblePhantasm } from "./models/NoblePhantasm";
 // const BASE_URL = 'https://1pqzvstl-8000.euw.devtunnels.ms/'
@@ -143,11 +143,8 @@ export const editMaster = async (formData: FormData, master_id: number): Promise
         alert(error)
     }
 }
-export const updateLocalization = async (formData: FormData, language: string, servant_id: number): Promise<any> => {
-    const response = await axios.put(BASE_URL + 'localization', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
+export const updateLocalization = async (servantLocalizationUpdate : ServantLocalization, language: string, servant_id: number): Promise<any> => {
+    const response = await axios.put(BASE_URL + 'localization', servantLocalizationUpdate, {
         params: {
             "language": language,
             "servant_id": servant_id
@@ -156,12 +153,8 @@ export const updateLocalization = async (formData: FormData, language: string, s
     return response
 }
 
-export const updateServant = async (formData: FormData, servant_id: number): Promise<any> => {
-    const response = await axios.put(BASE_URL + `servants/${servant_id}`, formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
+export const updateServant = async (servant : ServantUpdate, servant_id: number): Promise<any> => {
+    const response = await axios.put(BASE_URL + `servants/${servant_id}`, servant)
     return response
 }
 export const addPicture = async (formData: FormData, servant_id: number): Promise<any> => {

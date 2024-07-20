@@ -1,23 +1,22 @@
-import React, { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { FC, useState, ChangeEvent, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
-import { addLocalization, addPicture, createServant, updateLocalization, updateServant } from "../Api";
-import { Servant } from "../models/servant";
-import { ServantLocalization, ServantWhithLocalization } from "../schemas";
+import { addPicture, updateLocalization, updateServant } from "../Api";
+import { ServantLocalization, ServantUpdate, ServantWhithLocalization } from "../schemas";
 
 type ServantEditProps = {
     onClose: () => void;
-    reload: () => void,
-    currentServant: Servant
-    ruLoc : ServantLocalization | undefined;
-    enLoc : ServantLocalization | undefined
+    reload: () => void;
+    currentServant: ServantWhithLocalization;
 };
 
-const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ruLoc, enLoc }) => {
-    const { t } = useTranslation()    
+const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant }) => {
+    const { t } = useTranslation();
     const servantOptions = t('servant', { returnObjects: true });
     const alignmentOptions = t('alignments', { returnObjects: true });
-    
+    const ruLoc = currentServant.localizations.find(loc => loc.language === 'ru')
+    const enLoc = currentServant.localizations.find(loc => loc.language === 'en')
+
     const [servant, setServant] = useState<any>({
         name: currentServant.name,
         className: currentServant.className,
@@ -45,7 +44,18 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
         },
 
     });
-    
+    const createServantLocalizationObject = (localeData: any, language: string): ServantLocalization => ({
+        language,
+        name: localeData.name,
+        description: localeData.description,
+        history: localeData.history,
+        prototypePerson: localeData.prototype_person,
+        illustrator: localeData.illustrator,
+        voiceActor: localeData.voice_actor,
+        temper: localeData.temper,
+        intro: localeData.intro
+    });
+
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [language, setLanguage] = useState<'english' | 'russian'>('english');
 
@@ -88,29 +98,24 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const formData = new FormData();
-        formData.append('name', servant.name);
-        formData.append('class_name', servant.className);
-        formData.append('gender', servant.gender);
-        formData.append('alignment', servant.alignment);
-        
+        const updatedServant: ServantUpdate = {
+            name: servant.name,
+            className: servant.className,
+            alignment: servant.alignment,
+            gender: servant.gender
+        }
 
-        const englishFormData = new FormData();
-        Object.keys(servant.english).forEach(field => {
-            englishFormData.append(field, servant.english[field]);
-        });
 
-        const russianFormData = new FormData();
-        Object.keys(servant.russian).forEach(field => {
-            russianFormData.append(field, servant.russian[field]);
-        });
+        const englishLocalization = createServantLocalizationObject(servant.english, "en");
+        const russianLocalization = createServantLocalizationObject(servant.russian, "ru");
+
 
         try {
-            const response = await updateServant(formData, currentServant.id)
+            const response = await updateServant(updatedServant, currentServant.id)
 
-            await updateLocalization(russianFormData, "ru", currentServant.id)
-            await updateLocalization(englishFormData, "en", currentServant.id)
-            if (file){
+            await updateLocalization(russianLocalization, "ru", currentServant.id)
+            await updateLocalization(englishLocalization, "en", currentServant.id)
+            if (file) {
                 const fileData = new FormData()
                 fileData.append("file", file)
                 await addPicture(fileData, currentServant.id)
