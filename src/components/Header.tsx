@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import '../styles/main.css'
 
 interface NavbarProps {
 }

@@ -1,7 +1,5 @@
 import { FC, useState } from 'react';
-import '../styles/main.css';
 import { useTranslation } from 'react-i18next';
-
 import { updateNoblePhantasm } from '../Api';
 import { NoblePhantasm } from '../models/NoblePhantasm';
 import { PHANTASM_TYPES, RANKS } from '../constants';

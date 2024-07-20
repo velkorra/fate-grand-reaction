@@ -1,12 +1,10 @@
 import { FC, useState } from 'react';
-import '../styles/main.css'
 import { Contract } from '../schemas';
 import { useTranslation } from 'react-i18next';
 import { deleteContract } from '../Api';
 import DeleteButton from './DeleteButton';
 import { capitalize } from '../capitalize';
 import EditButtonMaster from './EditButtonMaster';
-import MasterEdit from './MasterEdit';
 
 interface ContractCardProps {
     contract: Contract

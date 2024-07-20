@@ -1,13 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import '../styles/main.css'
 import { Master } from '../models/master';
 import { useTranslation } from 'react-i18next';
 import { deleteMaster, getAciveContractsCount } from '../Api';
-import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import { capitalize } from '../capitalize';
 import EditButtonMaster from './EditButtonMaster';
-import ServantCreate from './ServantCreate';
 import MasterEdit from './MasterEdit';
 
 interface MasterCardProps {

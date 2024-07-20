@@ -1,9 +1,7 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaInfo } from 'react-icons/fa';
-import "../styles/main.css"
 import { capitalize } from '../capitalize';
-import { Servant } from '../models/servant';
 import ServantInfo from './ServantInfo';
 import { ServantWhithLocalization } from '../schemas';
 

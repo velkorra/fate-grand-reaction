@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import '../styles/main.css'
 import { getContracts, getFemales, getLevelAnalys, getLocalizations, getMasters, getServants, getSkills, getSummonedServants, getTopServants } from '../Api';
 import JsonTable from './JsonTable';
 

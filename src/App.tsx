@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import './styles/main.css'
+import './styles/main.scss'
 import Header from "./components/Header";
 import ServantList from "./components/ServantList";
 import './i18n'

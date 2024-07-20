@@ -1,10 +1,7 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
-import '../styles/main.css';
+import { ChangeEvent, FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createNoblePhantasm, createSkill, getName } from '../Api';
-import { PHANTASM_TYPES, RANKS } from '../constants';
-import { Servant } from '../models/servant';
-import { NoblePhantasm } from '../models/NoblePhantasm';
+import { createSkill, getName } from '../Api';
+import { RANKS } from '../constants';
 
 interface SkillCreateProps {
     reload: () => void;

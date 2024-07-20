@@ -1,5 +1,4 @@
 import { FC, useState } from 'react'
-import '../styles/main.css'
 import axios from 'axios';
 
 const FileUpload: FC = () => {

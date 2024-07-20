@@ -1,6 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import '../styles/main.css';
-
 import NoblePhantasmCard from './NoblePhantasmCard';
 import { useTranslation } from 'react-i18next';
 import { getNoblePhantasms, getServants } from '../Api';

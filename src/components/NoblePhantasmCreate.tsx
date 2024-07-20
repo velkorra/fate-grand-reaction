@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from 'react';
-import '../styles/main.css';
+import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNoblePhantasm, getName } from '../Api';
 import { PHANTASM_TYPES, RANKS } from '../constants';

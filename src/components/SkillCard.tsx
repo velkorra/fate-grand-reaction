@@ -1,15 +1,11 @@
 import { FC, useEffect, useState } from 'react';
-import '../styles/main.css';
 
 import { useTranslation } from 'react-i18next';
 
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
-import { deleteNoblePhantasm, deleteSkill, getSkillPicture } from '../Api';
-import NoblePhantasmEdit from './NoblePhantasmEdit';
-import { NoblePhantasm } from '../models/NoblePhantasm';
+import { deleteSkill, getSkillPicture } from '../Api';
 import SkillEdit from './SkillEdit';
-import { FaPlus } from 'react-icons/fa';
 import { isAxiosError } from 'axios';
 import { capitalize } from '../capitalize';
 

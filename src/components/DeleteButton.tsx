@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaTrash } from 'react-icons/fa';
-import "../styles/main.css"
 import { capitalize } from '../capitalize';
 interface DeleteButtonProps {
     reload: () => void

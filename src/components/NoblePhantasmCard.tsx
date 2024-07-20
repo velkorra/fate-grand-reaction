@@ -1,8 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import '../styles/main.css';
-
 import { useTranslation } from 'react-i18next';
-
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import { deleteNoblePhantasm, getName } from '../Api';

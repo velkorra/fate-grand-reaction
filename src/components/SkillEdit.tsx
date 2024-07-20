@@ -1,8 +1,5 @@
 import { ChangeEvent, FC, useState } from 'react';
-import '../styles/main.css';
 import { useTranslation } from 'react-i18next';
-
-
 import { RANKS } from '../constants';
 import { UpdateSkill, addSkillPicture } from '../Api';
 

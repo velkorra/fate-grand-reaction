@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent, FormEvent } from "react";
+import { FC, useState, ChangeEvent, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
 import { addLocalization, createServant } from "../Api";

@@ -203,7 +203,7 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant }) 
                                 <textarea className="text-box" name="history" value={servant[language].history} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>
-                                {capitalize(t('prototype_person'))}:
+                                {capitalize(t('prototypePerson'))}:
                                 <input type="text" name="prototype_person" value={servant[language].prototype_person} onChange={(e) => handleLanguageChange(e, language)} />
                             </label>
                             <label>

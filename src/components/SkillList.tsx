@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import '../styles/main.css'
 import { useTranslation } from 'react-i18next';
 import SkillCard from './SkillCard';
 import { getSkills } from '../Api';

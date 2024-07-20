@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaEdit } from 'react-icons/fa';
-import "../styles/main.css"
 import { capitalize } from '../capitalize';
 interface EditButtonProps{
   reload: () => void

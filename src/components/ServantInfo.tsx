@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import '../styles/main.css'
 import { useTranslation } from 'react-i18next';
 import { ServantWhithLocalization } from '../schemas';
 

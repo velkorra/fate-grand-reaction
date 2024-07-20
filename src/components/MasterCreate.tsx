@@ -1,5 +1,4 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
-import '../styles/main.css'
 import { useTranslation } from 'react-i18next';
 import { createMaster } from '../Api';
 import { capitalize } from '../capitalize';

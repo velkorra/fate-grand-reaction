@@ -1,13 +1,12 @@
 import { FC, useEffect, useState } from 'react'
-import '../styles/main.css'
 import { useTranslation } from 'react-i18next'
 import EditButton from './EditButton'
-import axios, { isAxiosError } from 'axios'
+import { isAxiosError } from 'axios'
 import DeleteButton from './DeleteButton'
-import { deleteServant, getLocalization, getName, getServantImage } from '../Api'
+import { deleteServant, getServantImage } from '../Api'
 import InfoButton from './InfoButton'
 import ServantEdit from './ServantEdit'
-import { ServantData, ServantLocalization, ServantWhithLocalization } from '../schemas'
+import { ServantWhithLocalization } from '../schemas'
 interface ServantCardProps {
   reload: () => void
   servant: ServantWhithLocalization
@@ -20,22 +19,22 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
   const getLocalizedName = () => {
     const localization = servant.localizations.find(loc => loc.language === t("lang"));
     if (localization && localization.name) {
-        return localization.name;
+      return localization.name;
     }
     for (const loc of servant.localizations) {
-        if (loc.name) {
-            return loc.name;
-        }
+      if (loc.name) {
+        return loc.name;
+      }
     }
     return servant.name;
-};
+  };
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   useEffect(() => {
     const fetchImage = async () => {
       try {
-      const data = await getServantImage(servant.id, servant.ascensionLevel)
+        const data = await getServantImage(servant.id, servant.ascensionLevel)
         setImageUrl(URL.createObjectURL(data));
       } catch (error) {
         if (isAxiosError(error)) {
