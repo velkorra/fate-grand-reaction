@@ -5,9 +5,10 @@ import "../styles/main.css"
 import { capitalize } from '../capitalize';
 import { Servant } from '../models/servant';
 import ServantInfo from './ServantInfo';
+import { ServantWhithLocalization } from '../schemas';
 
 interface InfoButtonProps{
-    servant : Servant
+    servant : ServantWhithLocalization
 }
 
 const InfoButton: FC<InfoButtonProps> = ({servant}) => {

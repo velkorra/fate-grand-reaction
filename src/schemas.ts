@@ -1,22 +1,41 @@
 export interface ServantData {
     id: number;
     name: string;
-    class_name: string;
-    ascension_level: number;
+    className: string;
+    ascensionLevel: number;
     level: number;
-    alignment : string;
-    gender : string
-    state : string
+    alignment: string;
+    gender: string;
+    state: string;
+    trueName: string;
+}
+
+export interface servantLocalization {
+    language: string;
+    name: string;
+    description: string;
+    history: string;
+    prototypePerson: string;
+    illustrator: string;
+    voiceActor: string;
+    temper: string;
+    intro: string;
 }
 export interface Contract {
-    servant_id : number;
-    master_id : number;
-    command_spells : number
-    status : string
-    start_date : string
-    end_date : string
+    servant_id: number;
+    master_id: number;
+    command_spells: number
+    status: string
+    start_date: string
+    end_date: string
 }
-export interface master{
+
+export interface ServantWhithLocalization extends ServantData {
+    localizations : servantLocalization[]
+}
+
+
+export interface master {
     id: number
-    nickname : string
+    nickname: string
 }

@@ -9,33 +9,32 @@ import DeleteButton from './DeleteButton'
 import { deleteServant, getLocalization, getName, getServantImage } from '../Api'
 import InfoButton from './InfoButton'
 import ServantEdit from './ServantEdit'
+import { ServantData, ServantWhithLocalization } from '../schemas'
 interface ServantCardProps {
   reload: () => void
-  servant: Servant
-}
-interface servantLocalization {
-  name: string;
-  description: string;
-  history: string;
-  prototype_person: string;
-  illustrator: string;
-  voice_actor: string;
-  temper: string;
-  intro: string;
+  servant: ServantWhithLocalization
 }
 const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
 
   const { t } = useTranslation()
-  const [ruLoc, setRuLoc] = useState<servantLocalization>()
-  const [enLoc, setEnLoc] = useState<servantLocalization>()
   const [imageUrl, setImageUrl] = useState<string>('');
-  const [trueName, setTrueName] = useState<string>("none")
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const getLocalizedName = () => {
+    const localization = servant.localizations.find(loc => loc.language === t("lang"));
+    if (localization && localization.name) {
+        return localization.name;
+    }
+    for (const loc of servant.localizations) {
+        if (loc.name) {
+            return loc.name;
+        }
+    }
+    return servant.name;
+};
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   useEffect(() => {
-    setTrueName(servant.name)
     const fetchImage = async () => {
       try {
       const data = await getServantImage(servant.id, servant.ascensionLevel)
@@ -48,13 +47,6 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         }
         console.error('Error fetching image:', error);
       }
-      const name = await getName(t('lang'), servant.id)
-      setTrueName(name)
-      const ru = await getLocalization('ru', servant.id)
-      const en = await getLocalization('en', servant.id)
-      setRuLoc(ru.data)
-      setEnLoc(en.data)
-
 
     };
 
@@ -79,7 +71,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         )}
       </div>
       <div className='servant-details'>
-        <h3 className='servant-name'>{trueName || servant.name}</h3>
+        <h3 className='servant-name'>{getLocalizedName()}</h3>
         <p className='servant-class'>{t('class')}: {t(`servant.${servant.className}`)}</p>
         <p className='servant-ascension'>{t('asc_level')}: {servant.ascensionLevel}</p>
         <p className='servant-level'>{t('level')}: {servant.level}</p>
@@ -91,9 +83,9 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         </div>
         <InfoButton servant={servant}></InfoButton>
       </div>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <ServantEdit onClose={closeModal} reload={reload} currentServant={servant} ruLoc={ruLoc} enLoc={enLoc}></ServantEdit>
-      )}
+      )} */}
     </div>
   );
 };

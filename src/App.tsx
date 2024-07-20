@@ -1,8 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import './styles/main.css'
-import { Servant } from "./models/servant";
 import Header from "./components/Header";
-import { getServants } from "./Api";
 import ServantList from "./components/ServantList";
 import './i18n'
 import MasterList from "./components/MasterList";
@@ -12,9 +10,7 @@ import SkillList from "./components/SkillList";
 import QueryList from "./components/QueryList";
 
 const App: FC = () => {
-
-  const [data, setData] = useState<Servant[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error] = useState<string | null>(null)
   const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 1000))
   const reload = () => { setLastUpdated(Math.floor(Date.now() / 1000)) }
@@ -23,13 +19,7 @@ const App: FC = () => {
     return highlighted === a
   }
   useEffect(() => {
-    const loadServants = async () => {
-      setLoading(true)
-      const data = await getServants()
-      setData(data)
-      setLoading(false)
-    }
-    loadServants()
+
   }, [lastUpdated])
 
 
@@ -82,7 +72,7 @@ const App: FC = () => {
       <div className="main-window">
         {highlighted === 'servant' ? (
           <div>
-            {data && (<ServantList reload={reload} servants={data}></ServantList>)}
+            {<ServantList reload={reload}></ServantList>}
           </div>
         )
           :

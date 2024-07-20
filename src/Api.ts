@@ -1,26 +1,39 @@
 import axios from "axios";
 import { Servant } from "./models/servant";
-import { Contract, ServantData } from "./schemas";
+import { Contract, ServantData, ServantWhithLocalization } from "./schemas";
 import { Master } from "./models/master";
 import { NoblePhantasm } from "./models/NoblePhantasm";
 // const BASE_URL = 'https://1pqzvstl-8000.euw.devtunnels.ms/'
-// const BASE_URL = 'http://127.0.0.1:8000/'
+const BASE_URL = 'http://127.0.0.1:8000/'
 // const BASE_URL = 'http://127.0.0.1:8080/api/'
 // const BASE_URL = 'https://d0jzr844-8080.euw.devtunnels.ms/api/'
 // const BASE_URL = 'https://d98wtxpk-8000.euw.devtunnels.ms//api/'
 // const BASE_URL = 'http://127.0.0.1:80/'
-const BASE_URL = 'https://d0jzr844-8000.euw.devtunnels.ms/'
+// const BASE_URL = 'https://d0jzr844-8000.euw.devtunnels.ms/'
 
 export const getServants = async (): Promise<Servant[]> => {
     try {
         const response = await axios.get<ServantData[]>(BASE_URL + 'servants')
 
-        return response.data.map(s => new Servant(s.id, s.name, s.class_name, s.ascension_level, s.level, s.alignment, s.gender, s.state));;
+        return response.data.map(s => new Servant(s.id, s.name, s.className, s.ascensionLevel, s.level, s.alignment, s.gender, s.state));;
     } catch (error) {
         console.error('Ошибка при получении данных:', error);
         return [];
     }
 }
+
+export const getServantsWhithLocalization = async (): Promise<ServantWhithLocalization[]> => {
+    try {
+        const response = await axios.get<ServantWhithLocalization[]>(BASE_URL + "servants_list/")
+        return response.data;
+    }
+    catch (error){
+        console.log(error);
+        return []
+    }
+
+}
+
 export const getServantImage = async(servant_id : number, grade : number) : Promise<any> => {
     const response = await axios.get(BASE_URL + 'get_image/', {
     params: {
