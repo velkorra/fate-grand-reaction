@@ -24,7 +24,7 @@ export const getServants = async (): Promise<Servant[]> => {
 
 export const getServantsWhithLocalization = async (): Promise<ServantWhithLocalization[]> => {
     try {
-        const response = await axios.get<ServantWhithLocalization[]>(BASE_URL + "servants_list/")
+        const response = await axios.get<ServantWhithLocalization[]>(BASE_URL + "servants_list")
         return response.data;
     }
     catch (error){
@@ -35,7 +35,7 @@ export const getServantsWhithLocalization = async (): Promise<ServantWhithLocali
 }
 
 export const getServantImage = async(servant_id : number, grade : number) : Promise<any> => {
-    const response = await axios.get(BASE_URL + 'get_image/', {
+    const response = await axios.get(BASE_URL + 'get_image', {
     params: {
       "servant_id": servant_id,
       "grade": grade

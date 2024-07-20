@@ -58,9 +58,9 @@
     },
     "description": "Description",
     "history": "History",
-    "prototype_person": "Prototype Person",
+    "prototypePerson": "Prototype Person",
     "illustrator": "Illustrator",
-    "voice_actor": "Voice Actor",
+    "voiceActor": "Voice Actor",
     "temper": "Temper",
     "intro": "Introduction"
 }

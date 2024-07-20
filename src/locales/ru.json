@@ -58,9 +58,9 @@
     },
     "description": "Описание",
     "history": "История",
-    "prototype_person": "Прототип Персонажа",
+    "prototypePerson": "Прототип Персонажа",
     "illustrator": "Иллюстратор",
-    "voice_actor": "Актёр озвучки",
+    "voiceActor": "Актёр озвучки",
     "temper": "Темперамент",
     "intro": "Введение"
 }

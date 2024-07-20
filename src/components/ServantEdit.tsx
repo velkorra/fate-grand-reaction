@@ -3,14 +3,14 @@ import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
 import { addLocalization, addPicture, createServant, getLocalization, updateLocalization, updateServant } from "../Api";
 import { Servant } from "../models/servant";
-import { servantLocalization } from "../models/servantLocalization";
+import { ServantLocalization, ServantWhithLocalization } from "../schemas";
 
 type ServantEditProps = {
     onClose: () => void;
     reload: () => void,
     currentServant: Servant
-    ruLoc : servantLocalization | undefined;
-    enLoc : servantLocalization | undefined
+    ruLoc : ServantLocalization | undefined;
+    enLoc : ServantLocalization | undefined
 };
 
 const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ruLoc, enLoc }) => {
@@ -28,9 +28,9 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
             name: enLoc?.name,
             description: enLoc?.description,
             history: enLoc?.history,
-            prototype_person: enLoc?.prototype_person,
+            prototype_person: enLoc?.prototypePerson,
             illustrator: enLoc?.illustrator,
-            voice_actor: enLoc?.voice_actor,
+            voice_actor: enLoc?.voiceActor,
             temper: enLoc?.temper,
             intro: enLoc?.intro
         },
@@ -38,9 +38,9 @@ const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ru
             name: ruLoc?.name,
             description: ruLoc?.description,
             history: ruLoc?.history,
-            prototype_person: ruLoc?.prototype_person,
+            prototype_person: ruLoc?.prototypePerson,
             illustrator: ruLoc?.illustrator,
-            voice_actor: ruLoc?.voice_actor,
+            voice_actor: ruLoc?.voiceActor,
             temper: ruLoc?.temper,
             intro: ruLoc?.intro
         },

@@ -10,7 +10,7 @@ export interface ServantData {
     trueName: string;
 }
 
-export interface servantLocalization {
+export interface ServantLocalization {
     language: string;
     name: string;
     description: string;
@@ -31,7 +31,7 @@ export interface Contract {
 }
 
 export interface ServantWhithLocalization extends ServantData {
-    localizations : servantLocalization[]
+    localizations : ServantLocalization[]
 }
 
 

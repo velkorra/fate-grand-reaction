@@ -3,27 +3,20 @@ import '../styles/main.css'
 import { Servant } from '../models/servant';
 import { getLocalization } from '../Api';
 import { useTranslation } from 'react-i18next';
+import { ServantWhithLocalization } from '../schemas';
 
 interface ServantInfoProps {
-    servant: Servant
+    servant: ServantWhithLocalization
 }
 
 const ServantInfo: FC<ServantInfoProps> = ({ servant }) => {
     const { t } = useTranslation()
-    const [details, setDetails] = useState('')
-    useEffect(()=> {
-        const loadDetails = async () =>{
-            const response = await getLocalization(t('lang'), servant.id)
-            console.log(response);
-            
-            setDetails(response.data)
-        }
-        loadDetails()
-    }, [])
+    const details = servant.localizations.find(loc => loc.language === t("lang"))
+
     return (
         <div style={{overflowY: "scroll"}}>
             
-            {details[0]!== "this servant has no info" ? (
+            {details ? (
                 <ul>
                 {Object.entries(details).map(([key, value]) => (
                   <li key={key}>

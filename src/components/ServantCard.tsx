@@ -9,7 +9,7 @@ import DeleteButton from './DeleteButton'
 import { deleteServant, getLocalization, getName, getServantImage } from '../Api'
 import InfoButton from './InfoButton'
 import ServantEdit from './ServantEdit'
-import { ServantData, ServantWhithLocalization } from '../schemas'
+import { ServantData, ServantLocalization, ServantWhithLocalization } from '../schemas'
 interface ServantCardProps {
   reload: () => void
   servant: ServantWhithLocalization
@@ -19,6 +19,8 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
   const { t } = useTranslation()
   const [imageUrl, setImageUrl] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const ruLoc = servant.localizations.find(loc => loc.language === 'ru')
+  const enLoc = servant.localizations.find(loc => loc.language === 'en')
   const getLocalizedName = () => {
     const localization = servant.localizations.find(loc => loc.language === t("lang"));
     if (localization && localization.name) {
@@ -83,9 +85,9 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         </div>
         <InfoButton servant={servant}></InfoButton>
       </div>
-      {/* {isModalOpen && (
+      {isModalOpen && (
         <ServantEdit onClose={closeModal} reload={reload} currentServant={servant} ruLoc={ruLoc} enLoc={enLoc}></ServantEdit>
-      )} */}
+      )}
     </div>
   );
 };
