@@ -81,7 +81,7 @@ const ServantCard: FC<ServantCardProps> = ({ servant, reload }) => {
         <p className='servant-level'>{t('status')}: {t(servant.state)}</p>
         <div className='servant-control'>
           <EditButton reload={reload} onClick={openModal}></EditButton>
-          <DeleteButton deleteServant={() => handleDelete(servant.id)} reload={reload}></DeleteButton>
+          <DeleteButton deleteThis={() => handleDelete(servant.id)} reload={reload}></DeleteButton>
         </div>
         <InfoButton servant={servant}></InfoButton>
       </div>

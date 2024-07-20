@@ -5,17 +5,17 @@ import "../styles/main.css"
 import { capitalize } from '../capitalize';
 interface DeleteButtonProps {
     reload: () => void
-    deleteServant: () => Promise<void>
+    deleteThis: () => Promise<void>
 }
 
-const DeleteButton: FC<DeleteButtonProps> = ({ deleteServant, reload }) => {
+const DeleteButton: FC<DeleteButtonProps> = ({ deleteThis, reload }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
     const handleDelete = async () => {
-        await deleteServant();
+        await deleteThis();
         reload()
         closeModal();
     };

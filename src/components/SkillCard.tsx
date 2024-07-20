@@ -69,7 +69,7 @@ const SkillCard: FC<SkillCardProps> = ({ skill, reload }) => {
                 </div>
                 <div className='skill-control'>
                     <EditButton reload={reload} onClick={openModal}/>
-                    <DeleteButton reload={reload} deleteServant={deleteThis} />
+                    <DeleteButton reload={reload} deleteThis={deleteThis} />
                 </div>
             </div>
             {isModalOpen && (

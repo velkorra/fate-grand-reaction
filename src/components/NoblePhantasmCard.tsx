@@ -46,7 +46,7 @@ const NoblePhantasmCard: FC<NoblePhantasmCardProps> = ({ noblePhantasm, reload }
         </div>
         <div className='np-control'>
           <EditButton reload={reload} onClick={openModal} />
-          <DeleteButton reload={reload} deleteServant={deleteThis} />
+          <DeleteButton reload={reload} deleteThis={deleteThis} />
         </div>
       </div>
       {isModalOpen && (

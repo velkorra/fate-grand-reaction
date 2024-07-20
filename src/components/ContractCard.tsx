@@ -35,7 +35,7 @@ const ContractCard: FC<ContractCardProps> = ({ contract, reload }) => {
         </div>
         <div className='servant-control' style={{ width: "35%" }}>
           <EditButtonMaster reload={reload} onClick={openModal} ></EditButtonMaster>
-          <DeleteButton deleteServant={deleteThis} reload={reload}></DeleteButton>
+          <DeleteButton deleteThis={deleteThis} reload={reload}></DeleteButton>
         </div>
       </div>
       {/* {isModalOpen && (
