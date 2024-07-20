@@ -1,7 +1,7 @@
 import React, { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../capitalize";
-import { addLocalization, addPicture, createServant, getLocalization, updateLocalization, updateServant } from "../Api";
+import { addLocalization, addPicture, createServant, updateLocalization, updateServant } from "../Api";
 import { Servant } from "../models/servant";
 import { ServantLocalization, ServantWhithLocalization } from "../schemas";
 
@@ -14,11 +14,10 @@ type ServantEditProps = {
 };
 
 const ServantEdit: FC<ServantEditProps> = ({ onClose, reload, currentServant, ruLoc, enLoc }) => {
-    const { t } = useTranslation()
-    console.log(ruLoc);
-    
+    const { t } = useTranslation()    
     const servantOptions = t('servant', { returnObjects: true });
     const alignmentOptions = t('alignments', { returnObjects: true });
+    
     const [servant, setServant] = useState<any>({
         name: currentServant.name,
         className: currentServant.className,

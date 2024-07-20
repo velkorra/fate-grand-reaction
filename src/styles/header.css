@@ -7,7 +7,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: url("../bg_bar.png");
+    background: url("../images/bg_bar.png");
     color: white;
     z-index: 9999;
 }
@@ -21,7 +21,7 @@
     left: 15.5%;
     height: 40px;
     width: 69%;
-    background: url("../bg_bar.png");
+    background: url("../images/bg_bar.png");
     color: white;
     z-index: 998;
     gap: 20px;
