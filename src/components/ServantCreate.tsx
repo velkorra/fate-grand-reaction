@@ -81,30 +81,20 @@ const ServantCreate: FC<ServantCreateProps> = ({ onClose, reload }) => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const formData = new FormData();
-        formData.append('name', servant.name);
-        formData.append('class_name', servant.className);
-        formData.append('gender', servant.gender);
-        formData.append('alignment', servant.alignment);
-        if (file) {
-            formData.append('file', file);
-        }
-        
-        const englishFormData = new FormData();
-        Object.keys(servant.english).forEach(field => {
-            englishFormData.append(field, servant.english[field]);
-        });
-
-        const russianFormData = new FormData();
-        Object.keys(servant.russian).forEach(field => {
-            russianFormData.append(field, servant.russian[field]);
-        });
+        const servantData = {
+            name: servant.name,
+            class_name: servant.className,
+            gender: servant.gender,
+            alignment: servant.alignment,
+            english: servant.english,
+            russian: servant.russian
+        };
 
         try {
-            const response = await createServant(formData)
+            const response = await createServant(servantData)
             const servant_id = response.data["id"]
-            await addLocalization(russianFormData, "ru", servant_id)
-            await addLocalization(englishFormData, "en", servant_id)
+            await addLocalization(servant.russian, "ru", servant_id)
+            await addLocalization(servant.english, "en", servant_id)
             reload()
             if (response.status === 200) {
                 console.log('Form submitted successfully.');
