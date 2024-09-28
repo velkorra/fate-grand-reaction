@@ -1,6 +1,9 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎮 Fate/GO Inspired Mobile Game Database (Frontend)
+This is the frontend for a mobile game database inspired by Fate/Grand Order, built with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
+The project uses [Axios](https://axios-http.com/) for making HTTP requests to the backend and [react-i18next](https://react.i18next.com/) for handling localization.
+
+
 
 ## Available Scripts
 
